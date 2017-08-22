@@ -1,0 +1,13 @@
+.addresses, .contacts, .documents, .languages, .dependents{
+    border: 1px solid #CCC;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.addresses .close, .contacts .close, .documents .close, .languages .close, .dependents .close{
+    font-size: 35px;
+    top: -19px;
+    position: relative;
+}

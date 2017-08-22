@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Módulo cadastral</title>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controller.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>Módulo Cadastral</h3>
+            <hr />
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="step1 active"><a data-toggle="tab" href="#step1">Step 1</a></li>
+                <li class="step2 disabled"><a data-toggle="tab" href="#step2">Step 2</a></li>
+                <li class="step3 disabled"><a data-toggle="tab" href="#step3">Step 3</a></li>
+                <li class="step4 disabled"><a data-toggle="tab" href="#step4">Step 4</a></li>
+                <li class="step5 disabled"><a data-toggle="tab" href="#step5">Step 5</a></li>
+                <li class="step6 disabled"><a data-toggle="tab" href="#step6">Step 6</a></li>
+                <li class="step7 disabled"><a data-toggle="tab" href="#step7">Step 7</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="step1" class="tab-pane active">
+                    <h3>Dados do usuário</h3>
+                    <hr />
+
+                    <form method="post" action="" name="registration_user_data" id="registration_user_data">
+                        <div class="form-group row">
+                            <div class="col-md-3 col-xs-12">
+                                <label>Nome completo</label>
+                                <input type="text" class="form-control" name="registration_user_data[full_name]" maxlength="70" />
+                            </div>
+
+                            <div class="col-md-3 col-xs-12">
+                                <label>Nome social</label>
+                                <input type="text" class="form-control" name="registration_user_data[social_name]" />
+                            </div>
+
+                            <div class="col-md-3 col-xs-12">
+                                <label>CPF</label>
+                                <input type="text" class="form-control" name="registration_user_data[cpf]" />
+                            </div>
+
+                            <div class="col-md-3 col-xs-12">
+                                <label>Data de nascimento</label>
+                                <input type="date" class="form-control" name="registration_user_data[date_of_birth]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3 col-xs-12">
+                                <label>Cidade de nascimento (código ibge)</label>
+                                <input type="text" class="form-control" name="registration_user_data[ibge_city_code_birth]" />
+                            </div>
+
+                            <div class="col-md-3 col-xs-12">
+                                <label>Estado de nascimento</label>
+                                <input type="text" class="form-control" name="registration_user_data[state_birth]" />
+                            </div>
+
+                            <div class="col-md-3 col-xs-12">
+                                <label>País de nascimento (código)</label>
+                                <input type="text" class="form-control" name="registration_user_data[country_code_birth]" />
+                            </div>
+
+                            <div class="col-md-3 col-xs-12">
+                                <label>Nacionalidade (código)</label>
+                                <input type="text" class="form-control" name="registration_user_data[country_nacionality_code]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>Nome da mãe</label>
+                                <input type="text" class="form-control" name="registration_user_data[mothers_name]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>Nome do pai</label>
+                                <input type="text" class="form-control" name="registration_user_data[fathers_name]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-4 col-xs-12">
+                                <label>Sexo</label>
+                                <select class="form-control" name="registration_user_data[gender]">
+                                    <option value="">Selecione algum</option>
+                                    <option value="m">Masculino</option>
+                                    <option value="f">Feminino</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Estado civil</label>
+                                <select class="form-control" name="registration_user_data[civil_status]">
+                                    <option value="">Selecione algum</option>
+                                    <option value="1">Solteiro</option>
+                                    <option value="2">Casado</option>
+                                    <option value="3">Divorciado</option>
+                                    <option value="4">Separado</option>
+                                    <option value="5">Viúvo</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Raça</label>
+                                <select class="form-control" name="registration_user_data[breed]">
+                                    <option value="">Selecione algum</option>
+                                    <option value="1">Branca</option>
+                                    <option value="2">Negra</option>
+                                    <option value="3">Parda (parda ou declarada como mulata, cabocla, cafuza, mameluca ou mestiça de negro com pessoa de outra cor ou raça)</option>
+                                    <option value="4">Amarela (de origem japonesa, chinesa, coreana etc)</option>
+                                    <option value="5">Indígena</option>
+                                    <option value="6">Não informado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>E-mail</label>
+                                <input type="text" class="form-control" name="registration_user_data[email]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>E-mail alternativo</label>
+                                <input type="text" class="form-control" name="registration_user_data[alternative_email]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>Matrícula</label>
+                                <input type="text" class="form-control" name="registration_user_data[enrollment]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>Unidade</label>
+                                <input type="text" class="form-control" name="registration_user_data[unit]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-4 col-xs-12">
+                                <label>Linkedln</label>
+                                <input type="text" class="form-control" name="registration_user_data[linkedln]" />
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Twitter</label>
+                                <input type="text" class="form-control" name="registration_user_data[twitter]" />
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Tipo de pessoa</label>
+                                <select class="form-control" name="registration_user_data[person_type]">
+                                    <option value="">Selecione algum</option>
+                                    <option value="brazilian">Branco</option>
+                                    <option value="foreign">Pardo</option>
+                                    <option value="trainee">Negro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <label>Informações adicionais</label>
+                                <textarea class="form-control" name="registration_user_data[additional_information]"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>Registration finished at</label>
+                                <input type="text" class="form-control" name="registration_user_data[registration_finished_at]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>User id</label>
+                                <input type="text" class="form-control" name="registration_user_data[user_id]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="step2" class="tab-pane disabled">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3>Dados do endereço</h3>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-success pull-right" id="add-address" style="margin-top: 20px"><span class="glyphicon glyphicon-plus"></span>Adicionar</button>
+                        </div>
+                    </div>
+
+                    <form method="post" action="" name="registration_addresses" enctype="multipart/form-data" id="registration_addresses">
+                        <!--ADDRESSES-->
+                        <div class="addresses-container">
+                            <div class="addresses">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="close">&times;</button>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Tipo de endereço</label>
+
+                                        <select class="form-control" name="registration_addresses[0][address_type]">
+                                            <option value="">Selecione</option>
+                                            <option value="home">Casa</option>
+                                            <option value="work">Trabalho</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>País do endereço</label>
+
+                                        <select class="form-control" name="registration_addresses[0][address_country]">
+                                            <option value="">Selecione</option>
+                                            <option value="br">Brasil</option>
+                                            <option value="exterior">Exterior</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>País</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][country]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Estado</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][state]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Código da cidade</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][city_code]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Cidade</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][city]" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Tipo de lugar</label>
+                                        <textarea class="form-control" name="registration_addresses[0][type_place]"></textarea>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Descrição do lugar</label>
+                                        <textarea class="form-control" name="registration_addresses[0][description_place]"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Cep</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][zip_code]" />
+                                        <a href="#">Pesquisar cep</a>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Bairro</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][neighborhood]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Endereço</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][address]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Número</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][number]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Complemento</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][complement]" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <label>User id</label>
+                                        <input type="text" class="form-control" name="registration_addresses[0][user_id]" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--ADDRESSES-->
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="step3" class="tab-pane disabled">
+                    <h3>Dados profissionais</h3>
+                    <hr />
+
+                    <form method="post" action="" name="registration_professional_data" enctype="multipart/form-data" id="registration_professional_data">
+                        <div class="form-group row">
+                            <div class="col-md-4 col-xs-12">
+                                <label>Cargo</label>
+                                <input type="text" class="form-control" name="registration_professional_data[role]" />
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Escolaridade</label>
+                                <select class="form-control" name="registration_professional_data[schooling]">
+                                    <option value="1">Primeiro grau</option>
+                                    <option value="2">Segundo grau</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Pis</label>
+                                <input type="text" class="form-control" name="registration_professional_data[pis]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>CREF</label>
+                                <input type="text" class="form-control" name="registration_professional_data[cref]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>Data de registro CREF</label>
+                                <input type="date" class="form-control" name="registration_professional_data[cref_registration_date]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-4 col-xs-12">
+                                <label>Passaporte</label>
+                                <input type="text" class="form-control" name="registration_professional_data[work_passport]" />
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Número do passaporte</label>
+                                <input type="text" class="form-control" name="registration_professional_data[work_passport_series]" />
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Estado do passaporte</label>
+                                <input type="text" class="form-control" name="registration_professional_data[work_passport_state]" />
+                            </div>
+                        </div>
+
+                        <h3>Estrangeiro</h3>
+                        <hr />
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>Data de chegada</label>
+                                <input type="date" class="form-control" name="registration_professional_data[foreign_arrival_date]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>Trabalha no brasil?</label>
+                                <select class="form-control" name="registration_professional_data[foreign_work_class]">
+                                    <option value="s">Sim</option>
+                                    <option value="n">Não</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>É casado(a) com brasileiro(a)?</label>
+                                <select class="form-control" name="registration_professional_data[foreign_married_brazilian]">
+                                    <option value="s">Sim</option>
+                                    <option value="n">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>Possui filhos?</label>
+                                <select class="form-control" name="registration_professional_data[foreigner_children]">
+                                    <option value="s">Sim</option>
+                                    <option value="n">Não</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3>Deficiente</h3>
+                        <hr />
+
+                        <div class="form-group row">
+                            <div class="col-md-4 col-xs-12">
+                                <label>Possui alguma deficiência?</label>
+                                <select class="form-control" name="registration_professional_data[type_disability]">
+                                    <option value="">Selecione algum</option>
+                                    <option value="none">Nenhuma</option>
+                                    <option value="physical">Psicológica</option>
+                                    <option value="auditory">Auditiva</option>
+                                    <option value="mental">Mental</option>
+                                    <option value="intellectual">Intelectual</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Você é reabilitado ou readaptado?</label>
+                                <select class="form-control" name="registration_professional_data[rehabilitated_worker]">
+                                    <option value="s">Sim</option>
+                                    <option value="n">Não</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Possui cotas de deficiência?</label>
+                                <select class="form-control" name="registration_professional_data[quota]">
+                                    <option value="s">Sim</option>
+                                    <option value="n">Não</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <label>Observações</label>
+                                <textarea class="form-control" name="registration_professional_data[observation]"></textarea>
+                            </div>
+                        </div>
+
+                        <h3>Outros</h3>
+                        <hr />
+
+                        <div class="form-group row">
+                            <div class="col-md-6 col-xs-12">
+                                <label>Data da finalização da graduação</label>
+
+                                <input type="date" class="form-control" name="registration_professional_data[college_graduation_date]" />
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <label>Você é aposentado?</label>
+
+                                <select class="form-control" name="registration_professional_data[retired_worker]">
+                                    <option value="s">Sim</option>
+                                    <option value="n">Não</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-4 col-xs-12">
+                                <label>Cursos Realizados</label>
+                                <textarea class="form-control" name="registration_professional_data[academic_education_last_course]"></textarea>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Experiência profissional</label>
+                                <textarea class="form-control" name="registration_professional_data[business_experience]"></textarea>
+                            </div>
+
+                            <div class="col-md-4 col-xs-12">
+                                <label>Você é aposentado?</label>
+                                <textarea class="form-control" name="registration_professional_data[complementary_courses]"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>Comprovante do pis</label>
+                                <input type="file" class="form-control" name="registration_professional_data[pis_file_id]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label>User id</label>
+                                <input type="text" class="form-control" name="registration_professional_data[user_id]" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="step4" class="tab-pane disabled">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3>Contatos</h3>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-success pull-right" id="add-contacts" style="margin-top: 20px">+ Adicionar</button>
+                        </div>
+                    </div>
+
+                    <form method="post" action="" name="registration_phone_numbers" enctype="multipart/form-data" id="registration_phone_numbers">
+                        <!--CONTACTS-->
+                        <div class="contacts-container">
+                            <div class="contacts">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="close">&times;</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Tipo de telefone</label>
+                                        <select class="form-control" name="registration_phone_numbers[0][phone_type]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="mobile">Celular</option>
+                                            <option value="residencial">Residencial</option>
+                                            <option value="work">Trabalho</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Código do país</label>
+                                        <input type="text" class="form-control" name="registration_phone_numbers[0][country_code]">
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Código da área</label>
+                                        <input type="text" class="form-control" name="registration_phone_numbers[0][area_code]">
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Número</label>
+                                        <input type="text" class="form-control" name="registration_phone_numbers[0][phone_number]">
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Ramal</label>
+                                        <input type="text" class="form-control" name="registration_phone_numbers[0][branch]">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>User id</label>
+                                        <input type="text" class="form-control" name="registration_phone_numbers[0][user_id]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--CONTACTS-->
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="step5" class="tab-pane disabled">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3>Documentos</h3>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-success pull-right" id="add-documents" style="margin-top: 20px">+ Adicionar</button>
+                        </div>
+                    </div>
+
+                    <form method="post" action="" name="registration_documents" enctype="multipart/form-data" id="registration_documents">
+                        <!--DOCUMENTS-->
+                        <div class="documents-container">
+                            <div class="documents">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="close">&times;</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Tipo de documento</label>
+                                        <select class="form-control" name="registration_documents[0][document_type]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="ric">RIC</option>
+                                            <option value="rg">RG</option>
+                                            <option value="rne">RNE</option>
+                                            <option value="oc">OC</option>
+                                            <option value="cnh">CNH</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Número</label>
+                                        <input type="text" class="form-control" name="registration_documents[0][number]" />
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Orgão emissor</label>
+                                        <input type="text" class="form-control" name="registration_documents[0][issuer_organ]" />
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Data de expedição</label>
+                                        <input type="date" class="form-control" name="registration_documents[0][shipping_date]" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Estado</label>
+                                        <input type="text" class="form-control" name="registration_documents[0][state]" />
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Data de expiração</label>
+                                        <input type="date" class="form-control" name="registration_documents[0][expiration_date]" />
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Categoria</label>
+                                        <select class="form-control" name="registration_documents[0][category]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Comprovante do documento</label>
+                                        <input type="file" class="form-control" name="registration_documents[0][document_file_id]" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>User Id</label>
+                                        <input type="text" class="form-control" name="registration_documents[0][user_id]" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--DOCUMENTS-->
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="step6" class="tab-pane disabled">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3>Idiomas</h3>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-success pull-right" id="add-languages" style="margin-top: 20px">+ Adicionar</button>
+                        </div>
+                    </div>
+
+                    <form method="post" action="" name="registration_languages" id="registration_languages">
+                        <div class="languages-container">
+                            <div class="languages">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="close">&times;</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Idioma</label>
+                                        <select class="form-control" name="registration_languages[0][language]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="english">Inglês</option>
+                                            <option value="portuguese">Português</option>
+                                            <option value="spanish">Espanhol</option>
+                                            <option value="other">Outros</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Nível</label>
+                                        <select class="form-control" name="registration_languages[0][level]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="none">Nenhum</option>
+                                            <option value="basic">Básico</option>
+                                            <option value="intermediate">Intermediário</option>
+                                            <option value="advanced">Avançado</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>User Id</label>
+                                        <input class="form-control" type="text" name="registration_languages[0][user_id]" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="step7" class="tab-pane disabled">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3>Dependents</h3>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button class="btn btn-success pull-right" id="add-dependents" style="margin-top: 20px">+ Adicionar</button>
+                        </div>
+                    </div>
+
+                    <form method="post" action="" name="registration_dependents" id="registration_dependents">
+                        <div class="dependents-container">
+                            <div class="dependents">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="close">&times;</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Tipo de dependente</label>
+                                        <select class="form-control" name="registration_dependents[0][dependent_type]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="01">Cônjuge</option>
+                                            <option value="02">Companheiro(a) com o(a) qual tenha filho ou viva há mais de 5 (cinco) anos</option>
+                                            <option value="03">Filho(a) ou enteado(a) até 21 (vinte e um) anos</option>
+                                            <option value="04">Filho(a) ou enteado(a) universitário(a) ou cursando escola técnica de 2º grau, até 24 (vinte e quatro) anos</option>
+                                            <option value="05">Filho(a) ou enteado(a) em qualquer idade, quando incapacitado física e/ou mentalmente para o trabalho</option>
+                                            <option value="06">Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, do(a) qual detenha a guarda judicial, até 21 (vinte e um) anos</option>
+                                            <option value="07">Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, com idade até 24 anos, se ainda estiver cursando estabelecimento de nível superior ou escola técnica de 2º grau, desde que tenha detido sua guarda judicial até os 21 anos</option>
+                                            <option value="08">Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, do(a) qual detenha a guarda judicial, em qualquer idade, quando incapacitado física e/ou mentalmente para o trabalho</option>
+                                            <option value="09">Pais, avós e bisavós</option>
+                                            <option value="10">Menor pobre, até 21 (vinte e um) anos, que crie e eduque e do qual detenha a guarda judicial</option>
+                                            <option value="11">A pessoa absolutamente incapaz, da qual seja tutor ou curador</option>
+                                            <option value="12">Ex-cônjuge que Receba Pensão de Alimentos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Nome completo</label>
+                                        <input type="text" class="form-control" name="registration_dependents[0][full_name]" />
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Data de aniversário</label>
+                                        <input type="date" class="form-control" name="registration_dependents[0][date_of_birth]" />
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>CPF</label>
+                                        <input type="text" class="form-control" name="registration_dependents[0][cpf]" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Dependente IRRF?</label>
+                                        <select class="form-control" name="registration_dependents[0][dependent_irrf]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="s">Sim</option>
+                                            <option value="n">Não</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Dependente para fins de recebimento do benefício?</label>
+                                        <select class="form-control" name="registration_dependents[0][dependent_sf]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="s">Sim</option>
+                                            <option value="n">Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Dependente plano privado?</label>
+                                        <select class="form-control" name="registration_dependents[0][dependent_plan]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="s">Sim</option>
+                                            <option value="n">Não</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Dependente tem incapacidade física ou mental?</label>
+                                        <select class="form-control" name="registration_dependents[0][physical_disability]">
+                                            <option value="">Selecione algum</option>
+                                            <option value="s">Sim</option>
+                                            <option value="n">Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>User Id</label>
+                                        <input class="form-control" type="text" name="registration_dependents[0][user_id]" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12 col-xs-12">
+                                <input type="submit" value="Finalizar" class="btn btn-primary pull-right" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
