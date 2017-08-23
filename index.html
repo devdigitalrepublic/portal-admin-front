@@ -280,7 +280,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Cep</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][zip_code]" />
+                                        <input type="text" class="cep" class="form-control" name="registration_addresses[0][zip_code]" />
                                         <a href="#">Pesquisar cep</a>
                                     </div>
                                 </div>
@@ -550,17 +550,17 @@
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>Código do país</label>
-                                        <input type="text" class="form-control" name="registration_phone_numbers[0][country_code]">
+                                        <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[0][country_code]">
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Código da área</label>
-                                        <input type="text" class="form-control" name="registration_phone_numbers[0][area_code]">
+                                        <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[0][area_code]">
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Número</label>
-                                        <input type="text" class="form-control" name="registration_phone_numbers[0][phone_number]">
+                                        <input type="text" class="form-control mobile" name="registration_phone_numbers[0][phone_number]">
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
