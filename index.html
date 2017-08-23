@@ -12,7 +12,8 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/controller.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+        
     </head>
 
     <body>
@@ -44,12 +45,12 @@
 
                             <div class="col-md-3 col-xs-12">
                                 <label>Nome social</label>
-                                <input type="text" class="form-control" name="registration_user_data[social_name]" />
+                                <input type="text" class="form-control" name="registration_user_data[social_name]" maxlength="70" />
                             </div>
 
                             <div class="col-md-3 col-xs-12">
                                 <label>CPF</label>
-                                <input type="text" class="form-control" name="registration_user_data[cpf]" />
+                                <input type="text" class="form-control" name="registration_user_data[cpf]" disabled="disabled" />
                             </div>
 
                             <div class="col-md-3 col-xs-12">
@@ -66,7 +67,7 @@
 
                             <div class="col-md-3 col-xs-12">
                                 <label>Estado de nascimento</label>
-                                <input type="text" class="form-control" name="registration_user_data[state_birth]" />
+                                <input type="text" class="form-control" name="registration_user_data[state_birth]" maxlength="2" minlength="2" />
                             </div>
 
                             <div class="col-md-3 col-xs-12">
@@ -83,12 +84,12 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-xs-12">
                                 <label>Nome da mãe</label>
-                                <input type="text" class="form-control" name="registration_user_data[mothers_name]" />
+                                <input type="text" class="form-control" name="registration_user_data[mothers_name]" maxlength="70" />
                             </div>
 
                             <div class="col-md-6 col-xs-12">
                                 <label>Nome do pai</label>
-                                <input type="text" class="form-control" name="registration_user_data[fathers_name]" />
+                                <input type="text" class="form-control" name="registration_user_data[fathers_name]" maxlength="70" />
                             </div>
                         </div>
 
@@ -97,8 +98,8 @@
                                 <label>Sexo</label>
                                 <select class="form-control" name="registration_user_data[gender]">
                                     <option value="">Selecione algum</option>
-                                    <option value="m">Masculino</option>
-                                    <option value="f">Feminino</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
                                 </select>
                             </div>
 

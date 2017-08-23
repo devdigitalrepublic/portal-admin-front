@@ -1,4 +1,20 @@
 $(document).ready(function () {
+
+
+
+
+  $('.date').mask('11/11/1111');
+  $('.time').mask('00:00:00');
+  $('.date_time').mask('00/00/0000 00:00:00');
+  $('.cep').mask('00000-000');
+  $('.phone').mask('0000-0000');
+  $('.phone_with_ddd').mask('(00) 0000-0000');
+  $('.cpf').mask('000.000.000-00', {reverse: true});
+  $('.money').mask('000.000.000.000.000,00', {reverse: true});
+
+
+
+
     var urlApi = "http://dev.portaladminv2.com/api/v1/";
 
     $(".nav-tabs li").removeClass("disabled");
@@ -101,10 +117,33 @@ $(document).ready(function () {
             return false;
         },
         rules: {
-            "registration_user_data[full_name]": "required"
+            "registration_user_data[full_name]" : {required: true},
+            //"registration_user_data[cpf]" : {required: true},
+            "registration_user_data[date_of_birth]" : {required: true},
+            "registration_user_data[mothers_name]" : {required: true},
+            "registration_user_data[fathers_name]" : {required: true},
+            "registration_user_data[gender]" : {required: true},
+            "registration_user_data[civil_status]" : {required: true},
+            "registration_user_data[breed]" : {required: true},
+            "registration_user_data[email]" : {required: true, email: true},
+            "registration_user_data[alternative_email]" : {required: false, email: true}
+            
+
+
+
+
         },
         messages: {
-            "registration_user_data[full_name]": "Campo obrigatório"
+            "registration_user_data[full_name]" : {required : "Campo obrigatório"},
+            "registration_user_data[date_of_birth]" : {required: "Campo obrigatório"},
+            "registration_user_data[mothers_name]" : {required: "Campo obrigatório"},
+            "registration_user_data[fathers_name]" : {required: "Campo obrigatório"},
+            "registration_user_data[gender]" : {required: "Campo obrigatório"},
+            "registration_user_data[civil_status]" : {required: "Campo obrigatório"},
+            "registration_user_data[breed]" : {required: "Campo obrigatório"},
+            "registration_user_data[email]" : {required: "Campo obrigatório", email: "Preencha um e-mail válido"},            
+            "registration_user_data[alternative_email]" : {email: "Preencha um e-mail válido"}      
+
         }
     });
 
