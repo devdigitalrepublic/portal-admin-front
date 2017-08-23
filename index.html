@@ -11,6 +11,7 @@
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/controller.js"></script>
+        <script src="js/search-cep.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
         
@@ -242,29 +243,67 @@
                                         </select>
                                     </div>
                                 </div>
+                                
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Cep</label>
+                                        <input type="text" class="form-control cep-input" name="registration_addresses[0][zip_code]" />
+                                        <a href="#">Pesquisar cep</a>
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>País</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][country]" />
+                                        <input type="text" class="form-control pais-input" name="registration_addresses[0][country]" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Estado</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][state]" />
+                                        <input type="text" class="form-control estado-input" name="registration_addresses[0][state]" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Código da cidade</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][city_code]" />
+                                        <input type="text" class="form-control codigo-input" name="registration_addresses[0][city_code]" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Cidade</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][city]" />
+                                        <input type="text" class="form-control cidade-input" name="registration_addresses[0][city]" />
                                     </div>
                                 </div>
 
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label>Cep</label>
+                                        <input type="text" class="form-control cep" name="registration_addresses[0][zip_code]" />
+                                       
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Bairro</label>
+                                        <input type="text" class="form-control bairro-input" name="registration_addresses[0][neighborhood]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Endereço</label>
+                                        <input type="text" class="form-control endereco-input" name="registration_addresses[0][address]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Número</label>
+                                        <input type="text" class="form-control number-input" name="registration_addresses[0][number]" />
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <label>Complemento</label>
+                                        <input type="text" class="form-control complemento-input" name="registration_addresses[0][complement]" />
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Tipo de lugar</label>
@@ -276,37 +315,6 @@
                                         <textarea class="form-control" name="registration_addresses[0][description_place]"></textarea>
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-6 col-xs-12">
-                                        <label>Cep</label>
-                                        <input type="text" class="cep" class="form-control" name="registration_addresses[0][zip_code]" />
-                                        <a href="#">Pesquisar cep</a>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-xs-12">
-                                        <label>Bairro</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][neighborhood]" />
-                                    </div>
-
-                                    <div class="col-md-3 col-xs-12">
-                                        <label>Endereço</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][address]" />
-                                    </div>
-
-                                    <div class="col-md-3 col-xs-12">
-                                        <label>Número</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][number]" />
-                                    </div>
-
-                                    <div class="col-md-3 col-xs-12">
-                                        <label>Complemento</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][complement]" />
-                                    </div>
-                                </div>
-
                                 <div class="form-group row">
                                     <div class="col-md-3">
                                         <label>User id</label>
