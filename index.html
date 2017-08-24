@@ -51,7 +51,7 @@
 
                             <div class="col-md-3 col-xs-12">
                                 <label>CPF</label>
-                                <input type="text" class="form-control" name="registration_user_data[cpf]" disabled="disabled" />
+                                <input type="text" class="form-control cpf" name="registration_user_data[cpf]" />
                             </div>
 
                             <div class="col-md-3 col-xs-12">
@@ -63,7 +63,7 @@
                         <div class="form-group row">
                             <div class="col-md-3 col-xs-12">
                                 <label>Cidade de nascimento (código ibge)</label>
-                                <input type="text" class="form-control" name="registration_user_data[ibge_city_code_birth]" />
+                                <input type="text" class="form-control" name="registration_user_data[ibge_city_code_birth]" maxlength="5" />
                             </div>
 
                             <div class="col-md-3 col-xs-12">
@@ -73,12 +73,12 @@
 
                             <div class="col-md-3 col-xs-12">
                                 <label>País de nascimento (código)</label>
-                                <input type="text" class="form-control" name="registration_user_data[country_code_birth]" />
+                                <input type="text" class="form-control" name="registration_user_data[country_code_birth]" maxlength="5" />
                             </div>
 
                             <div class="col-md-3 col-xs-12">
                                 <label>Nacionalidade (código)</label>
-                                <input type="text" class="form-control" name="registration_user_data[country_nacionality_code]" />
+                                <input type="text" class="form-control" name="registration_user_data[country_nacionality_code]" maxlength="5" />
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                             <div class="col-md-4 col-xs-12">
                                 <label>Sexo</label>
                                 <select class="form-control" name="registration_user_data[gender]">
-                                    <option value="">Selecione algum</option>
+                                    <option value="">Selecione alguma opção</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
                                 </select>
@@ -107,7 +107,7 @@
                             <div class="col-md-4 col-xs-12">
                                 <label>Estado civil</label>
                                 <select class="form-control" name="registration_user_data[civil_status]">
-                                    <option value="">Selecione algum</option>
+                                    <option value="">Selecione alguma opção</option>
                                     <option value="1">Solteiro</option>
                                     <option value="2">Casado</option>
                                     <option value="3">Divorciado</option>
@@ -119,7 +119,7 @@
                             <div class="col-md-4 col-xs-12">
                                 <label>Raça</label>
                                 <select class="form-control" name="registration_user_data[breed]">
-                                    <option value="">Selecione algum</option>
+                                    <option value="">Selecione alguma opção</option>
                                     <option value="1">Branca</option>
                                     <option value="2">Negra</option>
                                     <option value="3">Parda (parda ou declarada como mulata, cabocla, cafuza, mameluca ou mestiça de negro com pessoa de outra cor ou raça)</option>
@@ -133,24 +133,24 @@
                         <div class="form-group row">
                             <div class="col-md-6 col-xs-12">
                                 <label>E-mail</label>
-                                <input type="text" class="form-control" name="registration_user_data[email]" />
+                                <input type="text" class="form-control" name="registration_user_data[email]" maxlength="60" />
                             </div>
 
                             <div class="col-md-6 col-xs-12">
                                 <label>E-mail alternativo</label>
-                                <input type="text" class="form-control" name="registration_user_data[alternative_email]" />
+                                <input type="text" class="form-control" name="registration_user_data[alternative_email]" maxlength="60" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6 col-xs-12">
                                 <label>Matrícula</label>
-                                <input type="text" class="form-control" name="registration_user_data[enrollment]" />
+                                <input type="text" class="form-control" name="registration_user_data[enrollment]" maxlength="6" />
                             </div>
 
                             <div class="col-md-6 col-xs-12">
                                 <label>Unidade</label>
-                                <input type="text" class="form-control" name="registration_user_data[unit]" />
+                                <input type="text" class="form-control" name="registration_user_data[unit]" maxlength="20" />
                             </div>
                         </div>
 
@@ -209,7 +209,7 @@
                             <h3>Dados do endereço</h3>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-success pull-right" id="add-address" style="margin-top: 20px"><span class="glyphicon glyphicon-plus"></span>Adicionar</button>
+                            <button class="btn btn-success pull-right" id="add-address" style="margin-top: 20px">+ Adicionar</button>
                         </div>
                     </div>
 
@@ -226,7 +226,7 @@
                                     <div class="col-md-6 col-xs-12">
                                         <label>Tipo de endereço</label>
 
-                                        <select class="form-control" name="registration_addresses[0][address_type]">
+                                        <select class="form-control" name="registration_addresses[0][address_type]" required title="Campo obrigatório">
                                             <option value="">Selecione</option>
                                             <option value="home">Casa</option>
                                             <option value="work">Trabalho</option>
@@ -236,7 +236,7 @@
                                     <div class="col-md-6 col-xs-12">
                                         <label>País do endereço</label>
 
-                                        <select class="form-control" name="registration_addresses[0][address_country]">
+                                        <select class="form-control" name="registration_addresses[0][address_country]" required title="Campo obrigatório">
                                             <option value="">Selecione</option>
                                             <option value="br">Brasil</option>
                                             <option value="exterior">Exterior</option>
@@ -247,78 +247,77 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Cep</label>
-                                        <input type="text" class="form-control cep-input" name="registration_addresses[0][zip_code]" />
-                                        <a href="#">Pesquisar cep</a>
+                                        <input type="text" class="form-control cep cep-input" name="registration_addresses[0][zip_code]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>País</label>
-                                        <input type="text" class="form-control pais-input" name="registration_addresses[0][country]" />
+                                        <input type="text" class="form-control pais-input" name="registration_addresses[0][country]" required title="Campo obrigatório"/>
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Estado</label>
-                                        <input type="text" class="form-control estado-input" name="registration_addresses[0][state]" />
+                                        <input type="text" class="form-control estado-input" name="registration_addresses[0][state]" maxlength="2" required title="Campo obrigatório" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
-                                        <label>Código da cidade</label>
-                                        <input type="text" class="form-control codigo-input" name="registration_addresses[0][city_code]" />
+                                        <label>Código do município (ibge)</label>
+                                        <input type="text" class="form-control codigo-input" name="registration_addresses[0][city_code]" maxlength="9" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Cidade</label>
-                                        <input type="text" class="form-control cidade-input" name="registration_addresses[0][city]" />
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row">
-                                    <div class="col-md-6 col-xs-12">
-                                        <label>Cep</label>
-                                        <input type="text" class="form-control cep" name="registration_addresses[0][zip_code]" />
-                                       
+                                        <input type="text" class="form-control cidade-input" name="registration_addresses[0][city]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>Bairro</label>
-                                        <input type="text" class="form-control bairro-input" name="registration_addresses[0][neighborhood]" />
+                                        <input type="text" class="form-control bairro-input" name="registration_addresses[0][neighborhood]" maxlength="80" required title="Campo obrigatório" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Endereço</label>
-                                        <input type="text" class="form-control endereco-input" name="registration_addresses[0][address]" />
+                                        <input type="text" class="form-control endereco-input" name="registration_addresses[0][address]" required title="Campo obrigatório" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Número</label>
-                                        <input type="text" class="form-control number-input" name="registration_addresses[0][number]" />
+                                        <input type="text" class="form-control number-input" name="registration_addresses[0][number]" maxlength="10" required title="Campo obrigatório" />
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Complemento</label>
-                                        <input type="text" class="form-control complemento-input" name="registration_addresses[0][complement]" />
+                                        <input type="text" class="form-control complemento-input" name="registration_addresses[0][complement]" maxlength="15" required title="Campo obrigatório" />
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Tipo de lugar</label>
-                                        <textarea class="form-control" name="registration_addresses[0][type_place]"></textarea>
+                                        <textarea class="form-control" name="registration_addresses[0][type_place]" rows="5"></textarea>
                                     </div>
 
                                     <div class="col-md-6 col-xs-12">
                                         <label>Descrição do lugar</label>
-                                        <textarea class="form-control" name="registration_addresses[0][description_place]"></textarea>
+                                        <textarea class="form-control" name="registration_addresses[0][description_place]" maxlength="80" rows="5" required title="Campo obrigatório"></textarea>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label>Comprovante do documento</label>
+                                        <input type="file" class="form-control" id="upload-file" name="registration_addresses[0][address_file_id]" />
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <div class="col-md-3">
                                         <label>User id</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][user_id]" />
+                                        <input type="text" class="form-control" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
                             </div>
@@ -345,16 +344,27 @@
                             </div>
 
                             <div class="col-md-4 col-xs-12">
-                                <label>Escolaridade</label>
+                                <label>Grau de instrução</label>
                                 <select class="form-control" name="registration_professional_data[schooling]">
-                                    <option value="1">Primeiro grau</option>
-                                    <option value="2">Segundo grau</option>
+                                    <option value="">Selecione alguma opção</option>
+                                    <option value="01">Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou</option>
+                                    <option value="02">Até o 5º ano incompleto do Ensino Fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado escola regular</option>
+                                    <option value="03">5º ano completo do Ensino Fundamental</option>
+                                    <option value="04">Do 6º ao 9º ano do Ensino Fundamental incompleto (antiga 5ª a 8ª série)</option>
+                                    <option value="05">Ensino Fundamental Completo</option>
+                                    <option value="06">Ensino Médio incompleto</option>
+                                    <option value="07">Ensino Médio completo</option>
+                                    <option value="08">Educação Superior incompleta</option>
+                                    <option value="09">Educação Superior completa</option>
+                                    <option value="10">Pós-Graduação completa</option>
+                                    <option value="11">Mestrado completo</option>
+                                    <option value="12">Doutorado completo</option>
                                 </select>
                             </div>
 
                             <div class="col-md-4 col-xs-12">
                                 <label>Pis</label>
-                                <input type="text" class="form-control" name="registration_professional_data[pis]" />
+                                <input type="text" class="form-control" name="registration_professional_data[pis]" maxlength="11" />
                             </div>
                         </div>
 
@@ -372,18 +382,18 @@
 
                         <div class="form-group row">
                             <div class="col-md-4 col-xs-12">
-                                <label>Passaporte</label>
-                                <input type="text" class="form-control" name="registration_professional_data[work_passport]" />
+                                <label>Número (carteira de trabalho)</label>
+                                <input type="text" class="form-control" name="registration_professional_data[work_passport]" maxlength="7" />
                             </div>
 
                             <div class="col-md-4 col-xs-12">
-                                <label>Número do passaporte</label>
-                                <input type="text" class="form-control" name="registration_professional_data[work_passport_series]" />
+                                <label>Número de série (carteira de trabalho)</label>
+                                <input type="text" class="form-control" name="registration_professional_data[work_passport_series]" maxlength="5" />
                             </div>
 
                             <div class="col-md-4 col-xs-12">
-                                <label>Estado do passaporte</label>
-                                <input type="text" class="form-control" name="registration_professional_data[work_passport_state]" />
+                                <label>Estado (carteira de trabalho)</label>
+                                <input type="text" class="form-control" name="registration_professional_data[work_passport_state]" minlength="2" maxlength="2" />
                             </div>
                         </div>
 
@@ -397,10 +407,21 @@
                             </div>
 
                             <div class="col-md-6 col-xs-12">
-                                <label>Trabalha no brasil?</label>
+                                <label>Condição de trabalho no Brasil?</label>
                                 <select class="form-control" name="registration_professional_data[foreign_work_class]">
-                                    <option value="s">Sim</option>
-                                    <option value="n">Não</option>
+                                    <option value="">Selecione alguma</option>
+                                    <option value="1">Visto permanente</option>
+                                    <option value="2">Visto temporário</option>
+                                    <option value="3">Asilado</option>
+                                    <option value="4">Refugiado</option>
+                                    <option value="5">Solicitante de Refúgio</option>
+                                    <option value="6">Residente em país fronteiriço ao Brasil</option>
+                                    <option value="7">Deficiente físico e com mais de 51 anos</option>
+                                    <option value="8">Com residência provisória e anistiado, em situação irregular</option>
+                                    <option value="9">Permanência no Brasil em razão de filhos ou cônjuge brasileiros</option>
+                                    <option value="10">Beneficiado pelo acordo entre países do Mercosul</option>
+                                    <option value="11">Dependente de agente diplomático e/ou consular de países que mantém convênio de reciprocidade para o exercício de atividade remunerada no Brasil</option>
+                                    <option value="12">Beneficiado pelo Tratado de Amizade, Cooperação e Consulta entre a República Federativa do Brasil e a República Portuguesa</option>
                                 </select>
                             </div>
                         </div>
@@ -409,14 +430,16 @@
                             <div class="col-md-6 col-xs-12">
                                 <label>É casado(a) com brasileiro(a)?</label>
                                 <select class="form-control" name="registration_professional_data[foreign_married_brazilian]">
+                                    <option value="">Selecione alguma opção</option>
                                     <option value="s">Sim</option>
                                     <option value="n">Não</option>
                                 </select>
                             </div>
 
                             <div class="col-md-6 col-xs-12">
-                                <label>Possui filhos?</label>
+                                <label>Possui filhos brasileiros?</label>
                                 <select class="form-control" name="registration_professional_data[foreigner_children]">
+                                    <option value="">Selecione alguma opção</option>
                                     <option value="s">Sim</option>
                                     <option value="n">Não</option>
                                 </select>
@@ -459,7 +482,7 @@
                         <div class="form-group row">
                             <div class="col-md-12 col-xs-12">
                                 <label>Observações</label>
-                                <textarea class="form-control" name="registration_professional_data[observation]"></textarea>
+                                <textarea class="form-control" name="registration_professional_data[observation]" rows="10"></textarea>
                             </div>
                         </div>
 
@@ -477,6 +500,7 @@
                                 <label>Você é aposentado?</label>
 
                                 <select class="form-control" name="registration_professional_data[retired_worker]">
+                                    <option value="">Selecione alguma opção</option>
                                     <option value="s">Sim</option>
                                     <option value="n">Não</option>
                                 </select>
@@ -486,17 +510,17 @@
                         <div class="form-group row">
                             <div class="col-md-4 col-xs-12">
                                 <label>Cursos Realizados</label>
-                                <textarea class="form-control" name="registration_professional_data[academic_education_last_course]"></textarea>
+                                <textarea class="form-control" name="registration_professional_data[academic_education_last_course]" rows="5"></textarea>
                             </div>
 
                             <div class="col-md-4 col-xs-12">
                                 <label>Experiência profissional</label>
-                                <textarea class="form-control" name="registration_professional_data[business_experience]"></textarea>
+                                <textarea class="form-control" name="registration_professional_data[business_experience]" rows="5"></textarea>
                             </div>
 
                             <div class="col-md-4 col-xs-12">
                                 <label>Você é aposentado?</label>
-                                <textarea class="form-control" name="registration_professional_data[complementary_courses]"></textarea>
+                                <textarea class="form-control" name="registration_professional_data[complementary_courses]" rows="5"></textarea>
                             </div>
                         </div>
 
@@ -546,7 +570,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Tipo de telefone</label>
-                                        <select class="form-control" name="registration_phone_numbers[0][phone_type]">
+                                        <select class="form-control" name="registration_phone_numbers[0][phone_type]" required title="Campo obrigatório">
                                             <option value="">Selecione algum</option>
                                             <option value="mobile">Celular</option>
                                             <option value="residencial">Residencial</option>
@@ -558,17 +582,17 @@
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>Código do país</label>
-                                        <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[0][country_code]">
+                                        <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[0][country_code]" required title="Campo obrigatório">
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Código da área</label>
-                                        <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[0][area_code]">
+                                        <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[0][area_code]" required title="Campo obrigatório">
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
                                         <label>Número</label>
-                                        <input type="text" class="form-control mobile" name="registration_phone_numbers[0][phone_number]">
+                                        <input type="text" class="form-control mobile" name="registration_phone_numbers[0][phone_number]" required title="Campo obrigatório">
                                     </div>
 
                                     <div class="col-md-3 col-xs-12">
@@ -580,7 +604,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>User id</label>
-                                        <input type="text" class="form-control" name="registration_phone_numbers[0][user_id]">
+                                        <input type="text" class="form-control" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
                                     </div>
                                 </div>
                             </div>
@@ -619,7 +643,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Tipo de documento</label>
-                                        <select class="form-control" name="registration_documents[0][document_type]">
+                                        <select class="form-control" name="registration_documents[0][document_type]" required title="Campo obrigatório">
                                             <option value="">Selecione algum</option>
                                             <option value="ric">RIC</option>
                                             <option value="rg">RG</option>
@@ -633,24 +657,24 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>Número</label>
-                                        <input type="text" class="form-control" name="registration_documents[0][number]" />
+                                        <input type="text" class="form-control" name="registration_documents[0][number]" maxlength="15" required title="Campo obrigatório" />
                                     </div>
 
                                     <div class="col-md-4 col-xs-12">
                                         <label>Orgão emissor</label>
-                                        <input type="text" class="form-control" name="registration_documents[0][issuer_organ]" />
+                                        <input type="text" class="form-control" name="registration_documents[0][issuer_organ]" maxlength="20" />
                                     </div>
 
                                     <div class="col-md-4 col-xs-12">
                                         <label>Data de expedição</label>
-                                        <input type="date" class="form-control" name="registration_documents[0][shipping_date]" />
+                                        <input type="date" class="form-control" name="registration_documents[0][shipping_date]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>Estado</label>
-                                        <input type="text" class="form-control" name="registration_documents[0][state]" />
+                                        <input type="text" class="form-control" name="registration_documents[0][state]" minlength="2" maxlength="2" />
                                     </div>
 
                                     <div class="col-md-4 col-xs-12">
@@ -661,10 +685,16 @@
                                     <div class="col-md-4 col-xs-12">
                                         <label>Categoria</label>
                                         <select class="form-control" name="registration_documents[0][category]">
-                                            <option value="">Selecione algum</option>
+                                            <option value="">Selecione alguma opção</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="AB">AB</option>
+                                            <option value="AC">AC</option>
+                                            <option value="AD">AD</option>
+                                            <option value="AE">AE</option>
                                         </select>
                                     </div>
                                 </div>
@@ -679,7 +709,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>User Id</label>
-                                        <input type="text" class="form-control" name="registration_documents[0][user_id]" />
+                                        <input type="text" class="form-control" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
                             </div>
@@ -717,7 +747,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 col-xs-12">
                                         <label>Idioma</label>
-                                        <select class="form-control" name="registration_languages[0][language]">
+                                        <select class="form-control" name="registration_languages[0][language]" required title="Campo obrigatório">
                                             <option value="">Selecione algum</option>
                                             <option value="english">Inglês</option>
                                             <option value="portuguese">Português</option>
@@ -728,7 +758,7 @@
 
                                     <div class="col-md-6 col-xs-12">
                                         <label>Nível</label>
-                                        <select class="form-control" name="registration_languages[0][level]">
+                                        <select class="form-control" name="registration_languages[0][level]" required title="Campo obrigatório">
                                             <option value="">Selecione algum</option>
                                             <option value="none">Nenhum</option>
                                             <option value="basic">Básico</option>
@@ -741,7 +771,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>User Id</label>
-                                        <input class="form-control" type="text" name="registration_languages[0][user_id]" />
+                                        <input class="form-control" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
                             </div>
@@ -799,17 +829,17 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>Nome completo</label>
-                                        <input type="text" class="form-control" name="registration_dependents[0][full_name]" />
+                                        <input type="text" class="form-control" name="registration_dependents[0][full_name]" maxlength="30" />
                                     </div>
 
                                     <div class="col-md-4 col-xs-12">
-                                        <label>Data de aniversário</label>
+                                        <label>Data de nascimento</label>
                                         <input type="date" class="form-control" name="registration_dependents[0][date_of_birth]" />
                                     </div>
 
                                     <div class="col-md-4 col-xs-12">
                                         <label>CPF</label>
-                                        <input type="text" class="form-control" name="registration_dependents[0][cpf]" />
+                                        <input type="text" class="form-control cpf" name="registration_dependents[0][cpf]" maxlength="11" />
                                     </div>
                                 </div>
 
@@ -817,7 +847,7 @@
                                     <div class="col-md-6 col-xs-12">
                                         <label>Dependente IRRF?</label>
                                         <select class="form-control" name="registration_dependents[0][dependent_irrf]">
-                                            <option value="">Selecione algum</option>
+                                            <option value="">Selecione alguma opção</option>
                                             <option value="s">Sim</option>
                                             <option value="n">Não</option>
                                         </select>
@@ -826,7 +856,7 @@
                                     <div class="col-md-6 col-xs-12">
                                         <label>Dependente para fins de recebimento do benefício?</label>
                                         <select class="form-control" name="registration_dependents[0][dependent_sf]">
-                                            <option value="">Selecione algum</option>
+                                            <option value="">Selecione alguma opção</option>
                                             <option value="s">Sim</option>
                                             <option value="n">Não</option>
                                         </select>
@@ -837,7 +867,7 @@
                                     <div class="col-md-6 col-xs-12">
                                         <label>Dependente plano privado?</label>
                                         <select class="form-control" name="registration_dependents[0][dependent_plan]">
-                                            <option value="">Selecione algum</option>
+                                            <option value="">Selecione alguma opção</option>
                                             <option value="s">Sim</option>
                                             <option value="n">Não</option>
                                         </select>
@@ -846,7 +876,7 @@
                                     <div class="col-md-6 col-xs-12">
                                         <label>Dependente tem incapacidade física ou mental?</label>
                                         <select class="form-control" name="registration_dependents[0][physical_disability]">
-                                            <option value="">Selecione algum</option>
+                                            <option value="">Selecione alguma opção</option>
                                             <option value="s">Sim</option>
                                             <option value="n">Não</option>
                                         </select>

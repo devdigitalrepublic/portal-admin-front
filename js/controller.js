@@ -1,8 +1,4 @@
 $(document).ready(function () {
-
-
-
-
   $('.date').mask('11/11/1111');
   $('.time').mask('00:00:00');
   $('.date_time').mask('00/00/0000 00:00:00');
@@ -13,10 +9,7 @@ $(document).ready(function () {
   $('.cpf').mask('000.000.000-00', {reverse: true});
   $('.money').mask('000.000.000.000.000,00', {reverse: true});
 
-
-
-
-    var urlApi = "http://dev.portaladminv2.com/api/v1/";
+  var urlApi = "http://dev.portaladminv2.com/api/v1/";
 
   $(".nav-tabs li").removeClass("disabled");
   $(".nav-tabs li a[data-toggle=tab]").on("click", function (e) {
@@ -53,20 +46,35 @@ $(document).ready(function () {
       var newName = fieldname.replace(/\[\d+\]/, "[" + indexForm + "]");
       $(field).attr('name', newName);
     });
-    $(classFormContainer).append("<hr>");
+    // $(classFormContainer).append("<hr>");
     $(classFormContainer).append(formClone);
     removeForm(classForm);
     searchCep();
   }
 
   function removeForm(classForm) {
-
     $(classForm + " .close").click(function () {
       if ($(classForm).length > 1) {
         $(this).parent('div').parent('div').parent(classForm).remove();
       }
     });
+  }
 
+  function serializeFormData(data, idForm) {
+    var fields = $(idForm).find('.form-control');
+
+    $.each(fields, function (index, field) {
+      var nameField = $(field).attr('name');
+
+      if($(field).attr('type') == 'file') {
+        if(typeof $("input[name='"+nameField+"']")[0].files[0] !==  'undefined') {
+          data.append(nameField, $("input[name='"+nameField+"']")[0].files[0]);
+        }
+      } else {
+        data.append(nameField, $(field).val());
+      }
+    });
+    return data;
   }
 
   removeForm('.addresses');
@@ -95,18 +103,8 @@ $(document).ready(function () {
     addForm('.dependents', '.dependents-container');
   });
 
-  var registration_user_data = "";
-  var registration_addresses = "";
-  var registration_professional_data = "";
-  var registration_phone_numbers = "";
-  var registration_documents = "";
-  var registration_languages = "";
-  var registration_dependents = "";
-
   $("#registration_user_data").validate({
     submitHandler: function (form) {
-      registration_user_data = $(form).serialize();
-
       $.ajax({
         url: urlApi + "validate/step",
         type: "POST",
@@ -115,8 +113,8 @@ $(document).ready(function () {
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          enabledAndDisabledTab('.step1', '.step2');
-          enabledAndDisabledTabContent('#step1', '#step2');
+          // enabledAndDisabledTab('.step1', '.step2');
+          // enabledAndDisabledTabContent('#step1', '#step2');
         }
       });
       return false;
@@ -131,12 +129,11 @@ $(document).ready(function () {
             "registration_user_data[civil_status]" : {required: true},
             "registration_user_data[breed]" : {required: true},
             "registration_user_data[email]" : {required: true, email: true},
-            "registration_user_data[alternative_email]" : {required: false, email: true}
-            
-
-
-
-
+            "registration_user_data[alternative_email]" : {required: false, email: true},
+            "registration_user_data[enrollment]" : {required: true},
+            "registration_user_data[unit]" : {required: true},
+            "registration_user_data[person_type]" : {required: true},
+            "registration_user_data[user_id]" : {required: true}
         },
         messages: {
             "registration_user_data[full_name]" : {required : "Campo obrigatório"},
@@ -147,14 +144,16 @@ $(document).ready(function () {
             "registration_user_data[civil_status]" : {required: "Campo obrigatório"},
             "registration_user_data[breed]" : {required: "Campo obrigatório"},
             "registration_user_data[email]" : {required: "Campo obrigatório", email: "Preencha um e-mail válido"},            
-            "registration_user_data[alternative_email]" : {email: "Preencha um e-mail válido"}      
-
+            "registration_user_data[alternative_email]" : {email: "Preencha um e-mail válido"},
+            "registration_user_data[enrollment]" : {required: "Campo obrigatório"},
+            "registration_user_data[unit]" : {required: "Campo obrigatório"},
+            "registration_user_data[person_type]" : {required: "Campo obrigatório"},
+            "registration_user_data[user_id]" : {required: "Campo obrigatório"}
         }
   });
 
   $("#registration_addresses").validate({
     submitHandler: function (form) {
-      registration_addresses = $(form).serialize();
 
       $.ajax({
         url: urlApi + "validate/step",
@@ -164,19 +163,16 @@ $(document).ready(function () {
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          enabledAndDisabledTab('.step2', '.step3');
-          enabledAndDisabledTabContent('#step2', '#step3');
+          // enabledAndDisabledTab('.step2', '.step3');
+          // enabledAndDisabledTabContent('#step2', '#step3');
         }
       });
-
       return false;
     }
   });
 
   $("#registration_professional_data").validate({
     submitHandler: function (form) {
-      registration_professional_data = $(form).serialize();
-
       $.ajax({
         url: urlApi + "validate/step",
         type: "POST",
@@ -185,19 +181,34 @@ $(document).ready(function () {
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          enabledAndDisabledTab('.step3', '.step4');
-          enabledAndDisabledTabContent('#step3', '#step4');
+          // enabledAndDisabledTab('.step3', '.step4');
+          // enabledAndDisabledTabContent('#step3', '#step4');
         }
       });
-
       return false;
+    },
+    rules: {
+      "registration_professional_data[role]" : {required: true},
+      "registration_professional_data[schooling]" : {required: true},
+      "registration_professional_data[work_passport]" : {required: true},
+      "registration_professional_data[work_passport_series]" : {required: true},
+      "registration_professional_data[work_passport_state]" : {required: true},
+      "registration_professional_data[retired_worker]" : {required: true},
+      "registration_professional_data[user_id]" : {required: true},
+    },
+    messages: {
+      "registration_professional_data[role]" : {required: "Campo obrigatório"},
+      "registration_professional_data[schooling]" : {required: "Campo obrigatório"},
+      "registration_professional_data[work_passport]" : {required: "Campo obrigatório"},
+      "registration_professional_data[work_passport_series]" : {required: "Campo obrigatório"},
+      "registration_professional_data[work_passport_state]" : {required: "Campo obrigatório"},
+      "registration_professional_data[retired_worker]" : {required: "Campo obrigatório"},
+      "registration_professional_data[user_id]" : {required: "Campo obrigatório"},
     }
   });
 
   $("#registration_phone_numbers").validate({
     submitHandler: function (form) {
-      registration_phone_numbers = $(form).serialize();
-
       $.ajax({
         url: urlApi + "validate/step",
         type: "POST",
@@ -206,8 +217,8 @@ $(document).ready(function () {
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          enabledAndDisabledTab('.step4', '.step5');
-          enabledAndDisabledTabContent('#step4', '#step5');
+          // enabledAndDisabledTab('.step4', '.step5');
+          // enabledAndDisabledTabContent('#step4', '#step5');
         }
       });
 
@@ -217,8 +228,6 @@ $(document).ready(function () {
 
   $("#registration_documents").validate({
     submitHandler: function (form) {
-      registration_documents = $(form).serialize();
-
       $.ajax({
         url: urlApi + "validate/step",
         type: "POST",
@@ -227,8 +236,8 @@ $(document).ready(function () {
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          enabledAndDisabledTab('.step5', '.step6');
-          enabledAndDisabledTabContent('#step5', '#step6');
+          // enabledAndDisabledTab('.step5', '.step6');
+          // enabledAndDisabledTabContent('#step5', '#step6');
         }
       });
       return false;
@@ -237,8 +246,6 @@ $(document).ready(function () {
 
   $("#registration_languages").validate({
     submitHandler: function (form) {
-      registration_languages = $(form).serialize();
-
       $.ajax({
         url: urlApi + "validate/step",
         type: "POST",
@@ -247,8 +254,8 @@ $(document).ready(function () {
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          enabledAndDisabledTab('.step6', '.step7');
-          enabledAndDisabledTabContent('#step6', '#step7');
+          // enabledAndDisabledTab('.step6', '.step7');
+          // enabledAndDisabledTabContent('#step6', '#step7');
         }
       });
       return false;
@@ -257,16 +264,18 @@ $(document).ready(function () {
 
   $("#registration_dependents").validate({
     submitHandler: function (form) {
-      registration_dependents = $(form).serialize();
-      var registration_all_data = registration_user_data + "&" + registration_addresses + "&" + registration_professional_data + "&" + registration_phone_numbers + "&" + registration_documents + "&" + registration_languages + "&" + registration_dependents;
+      var allData = new FormData();
+
+      allData = serializeFormData(allData, ".tab-content");
+      allData.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
 
       $.ajax({
         url: urlApi + "registration/create",
         type: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
-        data: registration_all_data + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: allData,
         success: function (data) {
           console.log('cadastro realizado');
         }

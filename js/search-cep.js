@@ -1,17 +1,21 @@
-let HOST = "http://localhost:8000";
+// let HOST = "http://localhost:8000";
+let HOST = "http://dev.portaladminv2.com";
 let TOKEN = "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ";
+
 $(function () {
   searchCep();
-  
 });
+
 //Procura pelo cep conforme a pessoa digital
 function searchCep() {
   $(".cep-input").keyup(function () {
-    let cepInput = $(this);
-    let cep = cepInput.val();
+    var cepInput = $(this);
+    var cep = cepInput.val();
+
     if (cep.length < 9) {
       return false;
     }
+
     $.ajax({
       method: "GET",
       url: HOST + "/api/v1/search/zip-code",
