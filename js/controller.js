@@ -385,14 +385,45 @@ $(document).ready(function () {
         method: "GET",
         url: urlApi + "protheus/user",
         dataType: "JSON",
-        data: {system_token : TOKEN, user_id: 12},
+        data: {system_token : TOKEN, user_id: 13},
         beforeSend: function () {
             $.blockUI();
         }
     }).done(function (data) {
-        
+        let user = data.user;
+        $('[name="registration_user_data[full_name]"]').val(user.nome);
+        $('[name="registration_user_data[enrollment]"]').val(user.mat);
+        $('[name="registration_user_data[social_name]"]').val(user.nomecm);
+        $('[name="registration_user_data[email]"]').val(user.email);
+        $('[name="registration_user_data[cpf]"]').val(user.cic);
+        $('[name="registration_user_data[mothers_name]"]').val(user.mae);
+        $('[name="registration_user_data[country_code_birth]"]').val(user.grinra);
+        $('[name="registration_user_data[country_nacionality_code]"]').val(user.grinra);
+        $('[name="registration_user_data[gender]"]').val(user.sexo);
+        $('[name="registration_user_data[date_of_birth]"]').val(user.nasc);
+        $('[name="registration_user_data[state_birth]"]').val(user.estado);
+        $('[name="registration_user_data[unit]"]').val(user.nomemp);
+        $('[name="registration_addresses[0][complement]"]').val(user.comple);
+        $('[name="registration_addresses[0][number]"]').val(user.numend);
+        $('[name="registration_addresses[0][state]"]').val(user.estado);
+        $('[name="registration_addresses[0][city]"]').val(user.munici);
+        $('[name="registration_addresses[0][zip_code]"]').val(user.cep);
+        $('[name="registration_addresses[0][neighborhood]"]').val(user.bairro);
+        $('[name="registration_addresses[0][address]"]').val(user.endere);
+        $('[name="registration_professional_data[pis]"]').val(user.pis);
+        $('[name="registration_professional_data[role]"]').val(user.rjdesc);
+        $('[name="registration_professional_data[work_passport]"]').val(user.numcp);
+        $('[name="registration_professional_data[work_passport_series]"]').val(user.sercp);
+        $('[name="registration_documents[0][document_type]"]').val("rg");
+        $('[name="registration_documents[0][number]"]').val(user.rg);
+        $('[name="registration_phone_numbers[0][phone_type]"]').val("mobile");
+        $('[name="registration_phone_numbers[0][area_code]"]').val(user.dddcel);
+        $('[name="registration_phone_numbers[0][phone_number]"]').val(user.numcel);
+        $('[name="registration_phone_numbers[1][phone_type]"]').val("residencial");
+        $('[name="registration_phone_numbers[1][area_code]"]').val(user.dddfon);
+        $('[name="registration_phone_numbers[1][phone_number]"]').val(user.telefo);
     }).always(function(){
-        $.unblockUI();
+        setTimeout(function(){$.unblockUI();}, 2000);
     });
   
   

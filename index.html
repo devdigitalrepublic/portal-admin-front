@@ -36,6 +36,13 @@
 
                 <div class="tab-content">
                     <div id="step1" class="tab-pane active">
+                        <h3>Dados do usuário</h3>
+                        <hr />
+
+                        <div class="alert alert-danger print-error-msg" style="display: none">
+                            <ul></ul>
+                        </div>
+
                         <form method="post" action="" name="registration_user_data" id="registration_user_data">
                             <div class="form-group row">
                                 <div class="col-md-3 col-xs-12">
@@ -48,23 +55,10 @@
                                     <input type="text" class="form-control" name="registration_user_data[social_name]" maxlength="70" />
                                 </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                    <div class="alert alert-danger print-error-msg" style="display: none">
-                        <ul></ul>
-                    </div>
-
-                    <form method="post" action="" name="registration_user_data" id="registration_user_data">
-                        <div class="form-group row">
-                            <div class="col-md-3 col-xs-12">
-                                <label>Nome completo</label>
-                                <input type="text" class="form-control" name="registration_user_data[full_name]" maxlength="70" />
-                            </div>
-=======
                                 <div class="col-md-3 col-xs-12">
                                     <label>CPF</label>
                                     <input type="text" class="form-control cpf" name="registration_user_data[cpf]" />
                                 </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
 
                                 <div class="col-md-3 col-xs-12">
                                     <label>Data de nascimento</label>
@@ -177,26 +171,15 @@
                                     <input type="text" class="form-control" name="registration_user_data[twitter]" />
                                 </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                            <div class="col-md-4 col-xs-12">
-                                <label>Tipo de pessoa</label>
-                                <select class="form-control" name="registration_user_data[person_type]">
-                                    <option value="">Selecione algum</option>
-                                    <option value="brazilian">Brasileiro</option>
-                                    <option value="foreign">Estrangeiro</option>
-                                    <option value="trainee">Estagiário</option>
-                                </select>
-=======
                                 <div class="col-md-4 col-xs-12">
                                     <label>Tipo de pessoa</label>
                                     <select class="form-control" name="registration_user_data[person_type]">
                                         <option value="">Selecione algum</option>
-                                        <option value="brazilian">Branco</option>
-                                        <option value="foreign">Pardo</option>
-                                        <option value="trainee">Negro</option>
+                                        <option value="brazilian">Brasileiro</option>
+                                        <option value="foreign">Estrangeiro</option>
+                                        <option value="trainee">Estagiário</option>
                                     </select>
                                 </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                             </div>
 
                             <div class="form-group row">
@@ -212,16 +195,10 @@
                                     <input type="text" class="form-control" name="registration_user_data[registration_finished_at]" />
                                 </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                            <div class="col-md-6 col-xs-12">
-                                <label>User id</label>
-                                <input type="text" class="form-control user_id" name="registration_user_data[user_id]" />
-=======
                                 <div class="col-md-6 col-xs-12">
                                     <label>User id</label>
-                                    <input type="text" class="form-control" name="registration_user_data[user_id]" />
+                                    <input type="text" class="form-control user_id" name="registration_user_data[user_id]" />
                                 </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                             </div>
 
                             <div class="form-group row">
@@ -232,24 +209,18 @@
                         </form>
                     </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                    <div class="alert alert-danger print-error-msg" style="display: none">
-                        <ul></ul>
-                    </div>
-
-                    <form method="post" action="" name="registration_addresses" enctype="multipart/form-data" id="registration_addresses">
-                        <!--ADDRESSES-->
-                        <div class="addresses-container">
-                            <div class="addresses">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" class="close">&times;</button>
-=======
                     <div id="step2" class="tab-pane disabled">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
+                                <h3>Dados do endereço</h3>
+                            </div>
+                            <div class="col-md-2">
                                 <button class="btn btn-success pull-right" id="add-address" style="margin-top: 20px">+ Adicionar</button>
                             </div>
+                        </div>
+
+                        <div class="alert alert-danger print-error-msg" style="display: none">
+                            <ul></ul>
                         </div>
 
                         <form method="post" action="" name="registration_addresses" enctype="multipart/form-data" id="registration_addresses">
@@ -260,7 +231,6 @@
                                         <div class="col-md-12">
                                             <button type="button" class="close">&times;</button>
                                         </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6 col-xs-12">
@@ -341,19 +311,6 @@
                                             <textarea class="form-control" name="registration_addresses[0][type_place]" rows="5"></textarea>
                                         </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                                <div class="form-group row">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>Comprovante do documento</label>
-                                        <input type="file" class="form-control" id="upload-file" name="registration_addresses[0][address_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-3">
-                                        <label>User id</label>
-                                        <input type="text" class="form-control user_id" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
-=======
                                         <div class="col-md-6 col-xs-12">
                                             <label>Descrição do lugar</label>
                                             <textarea class="form-control" name="registration_addresses[0][description_place]" maxlength="80" rows="5" required title="Campo obrigatório"></textarea>
@@ -363,90 +320,36 @@
                                     <div class="form-group row">
                                         <div class="col-md-4 col-xs-12">
                                             <label>Comprovante do documento</label>
-                                            <input type="file" class="form-control" id="upload-file" name="registration_addresses[0][address_file_id]" />
+                                            <input type="file" class="form-control" id="upload-file" name="registration_addresses[0][address_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf" />
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-3">
                                             <label>User id</label>
-                                            <input type="text" class="form-control" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
+                                            <input type="text" class="form-control user_id" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
                                         </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                     </div>
                                 </div>
                             </div>
                             <!--ADDRESSES-->
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                        <div class="form-group row">
-                            <div class="col-md-12 col-xs-12">
-                                <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div id="step3" class="tab-pane disabled">
-                    <h3>Dados profissionais</h3>
-                    <hr />
-
-                    <div class="alert alert-danger print-error-msg" style="display: none">
-                        <ul></ul>
-                    </div>
-
-                    <form method="post" action="" name="registration_professional_data" enctype="multipart/form-data" id="registration_professional_data">
-                        <div class="form-group row">
-                            <div class="col-md-4 col-xs-12">
-                                <label>Cargo</label>
-                                <input type="text" class="form-control" name="registration_professional_data[role]" />
-                            </div>
-
-                            <div class="col-md-4 col-xs-12">
-                                <label>Grau de instrução</label>
-                                <select class="form-control" name="registration_professional_data[schooling]">
-                                    <option value="">Selecione alguma opção</option>
-                                    <option value="01">Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou</option>
-                                    <option value="02">Até o 5º ano incompleto do Ensino Fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado escola regular</option>
-                                    <option value="03">5º ano completo do Ensino Fundamental</option>
-                                    <option value="04">Do 6º ao 9º ano do Ensino Fundamental incompleto (antiga 5ª a 8ª série)</option>
-                                    <option value="05">Ensino Fundamental Completo</option>
-                                    <option value="06">Ensino Médio incompleto</option>
-                                    <option value="07">Ensino Médio completo</option>
-                                    <option value="08">Educação Superior incompleta</option>
-                                    <option value="09">Educação Superior completa</option>
-                                    <option value="10">Pós-Graduação completa</option>
-                                    <option value="11">Mestrado completo</option>
-                                    <option value="12">Doutorado completo</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-4 col-xs-12">
-                                <label>Pis</label>
-                                <input type="text" class="form-control" name="registration_professional_data[pis]" maxlength="11" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 col-xs-12">
-                                <label>CREF</label>
-                                <input type="text" class="form-control" name="registration_professional_data[cref]" />
-                            </div>
-
-                            <div class="col-md-6 col-xs-12">
-                                <label>Data de registro CREF</label>
-                                <input type="date" class="form-control" name="registration_professional_data[cref_registration_date]" />
-=======
                             <div class="form-group row">
                                 <div class="col-md-12 col-xs-12">
                                     <input type="submit" value="Avançar" class="btn btn-primary pull-right" />
                                 </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                             </div>
                         </form>
                     </div>
 
                     <div id="step3" class="tab-pane disabled">
+                        <h3>Dados profissionais</h3>
+                        <hr />
+
+                        <div class="alert alert-danger print-error-msg" style="display: none">
+                            <ul></ul>
+                        </div>
+
                         <form method="post" action="" name="registration_professional_data" enctype="multipart/form-data" id="registration_professional_data">
                             <div class="form-group row">
                                 <div class="col-md-4 col-xs-12">
@@ -590,31 +493,15 @@
                                 </div>
                             </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                        <div class="form-group row">
-                            <div class="col-md-3">
-                                <label>Comprovante do pis</label>
-                                <input type="file" class="form-control" name="registration_professional_data[pis_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf" />
-=======
                             <div class="form-group row">
                                 <div class="col-md-12 col-xs-12">
                                     <label>Observações</label>
                                     <textarea class="form-control" name="registration_professional_data[observation]" rows="10"></textarea>
                                 </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                             </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                        <div class="form-group row">
-                            <div class="col-md-3">
-                                <label>User id</label>
-                                <input type="text" class="form-control user_id" name="registration_professional_data[user_id]" />
-                            </div>
-                        </div>
-=======
                             <h3>Outros</h3>
                             <hr />
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
 
                             <div class="form-group row">
                                 <div class="col-md-6 col-xs-12">
@@ -626,26 +513,11 @@
                                 <div class="col-md-6 col-xs-12">
                                     <label>Você é aposentado?</label>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                    <div class="alert alert-danger print-error-msg" style="display: none">
-                        <ul></ul>
-                    </div>
-
-                    <form method="post" action="" name="registration_phone_numbers" enctype="multipart/form-data" id="registration_phone_numbers">
-                        <!--CONTACTS-->
-                        <div class="contacts-container">
-                            <div class="contacts">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" class="close">&times;</button>
-                                    </div>
-=======
                                     <select class="form-control" name="registration_professional_data[retired_worker]">
                                         <option value="">Selecione alguma opção</option>
                                         <option value="s">Sim</option>
                                         <option value="n">Não</option>
                                     </select>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                 </div>
                             </div>
 
@@ -660,46 +532,23 @@
                                     <textarea class="form-control" name="registration_professional_data[business_experience]" rows="5"></textarea>
                                 </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-xs-12">
-                                        <label>User id</label>
-                                        <input type="text" class="form-control user_id" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
-                                    </div>
-=======
                                 <div class="col-md-4 col-xs-12">
                                     <label>Você é aposentado?</label>
                                     <textarea class="form-control" name="registration_professional_data[complementary_courses]" rows="5"></textarea>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <label>Comprovante do pis</label>
-                                    <input type="file" class="form-control" name="registration_professional_data[pis_file_id]" />
+                                    <input type="file" class="form-control" name="registration_professional_data[pis_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf" />
                                 </div>
                             </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                    <div class="alert alert-danger print-error-msg" style="display: none">
-                        <ul></ul>
-                    </div>
-
-                    <form method="post" action="" name="registration_documents" enctype="multipart/form-data" id="registration_documents">
-                        <!--DOCUMENTS-->
-                        <div class="documents-container">
-                            <div class="documents">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" class="close">&times;</button>
-                                    </div>
-=======
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <label>User id</label>
-                                    <input type="text" class="form-control" name="registration_professional_data[user_id]" />
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
+                                    <input type="text" class="form-control user_id" name="registration_professional_data[user_id]" />
                                 </div>
                             </div>
 
@@ -713,9 +562,17 @@
 
                     <div id="step4" class="tab-pane disabled">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
+                                <h3>Contatos</h3>
+                            </div>
+
+                            <div class="col-md-2">
                                 <button class="btn btn-success pull-right" id="add-contacts" style="margin-top: 20px">+ Adicionar</button>
                             </div>
+                        </div>
+
+                        <div class="alert alert-danger print-error-msg" style="display: none">
+                            <ul></ul>
                         </div>
 
                         <form method="post" action="" name="registration_phone_numbers" enctype="multipart/form-data" id="registration_phone_numbers">
@@ -756,31 +613,65 @@
                                             <input type="text" class="form-control mobile" name="registration_phone_numbers[0][phone_number]" required title="Campo obrigatório">
                                         </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                                <div class="form-group row">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>Comprovante do documento</label>
-                                        <input type="file" class="form-control" name="registration_documents[0][document_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf"/>
-=======
                                         <div class="col-md-3 col-xs-12">
                                             <label>Ramal</label>
                                             <input type="text" class="form-control" name="registration_phone_numbers[0][branch]">
                                         </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                     </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                                <div class="form-group row">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>User Id</label>
-                                        <input type="text" class="form-control user_id" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
-=======
                                     <div class="form-group row">
                                         <div class="col-md-3 col-xs-12">
                                             <label>User id</label>
-                                            <input type="text" class="form-control" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
+                                            <input type="text" class="form-control user_id" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
                                         </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
+                                    </div>
+                                </div>
+                                <div class="contacts">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="close">&times;</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-xs-12">
+                                            <label>Tipo de telefone</label>
+                                            <select class="form-control" name="registration_phone_numbers[1][phone_type]" required title="Campo obrigatório">
+                                                <option value="">Selecione algum</option>
+                                                <option value="mobile">Celular</option>
+                                                <option value="residencial">Residencial</option>
+                                                <option value="work">Trabalho</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-3 col-xs-12">
+                                            <label>Código do país</label>
+                                            <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[1][country_code]" required title="Campo obrigatório">
+                                        </div>
+
+                                        <div class="col-md-3 col-xs-12">
+                                            <label>Código da área</label>
+                                            <input type="text" class="form-control" maxlength="2" name="registration_phone_numbers[1][area_code]" required title="Campo obrigatório">
+                                        </div>
+
+                                        <div class="col-md-3 col-xs-12">
+                                            <label>Número</label>
+                                            <input type="text" class="form-control mobile" name="registration_phone_numbers[1][phone_number]" required title="Campo obrigatório">
+                                        </div>
+
+                                        <div class="col-md-3 col-xs-12">
+                                            <label>Ramal</label>
+                                            <input type="text" class="form-control" name="registration_phone_numbers[1][branch]">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-3 col-xs-12">
+                                            <label>User id</label>
+                                            <input type="text" class="form-control user_id" name="registration_phone_numbers[1][user_id]" required title="Campo obrigatório">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -794,54 +685,19 @@
                         </form>
                     </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                    <div class="alert alert-danger print-error-msg" style="display: none">
-                        <ul></ul>
-                    </div>
-
-                    <form method="post" action="" name="registration_languages" id="registration_languages">
-                        <div class="languages-container">
-                            <div class="languages">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" class="close">&times;</button>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-6 col-xs-12">
-                                        <label>Idioma</label>
-                                        <select class="form-control" name="registration_languages[0][language]" required title="Campo obrigatório">
-                                            <option value="">Selecione algum</option>
-                                            <option value="english">Inglês</option>
-                                            <option value="portuguese">Português</option>
-                                            <option value="spanish">Espanhol</option>
-                                            <option value="other">Outros</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6 col-xs-12">
-                                        <label>Nível</label>
-                                        <select class="form-control" name="registration_languages[0][level]" required title="Campo obrigatório">
-                                            <option value="">Selecione algum</option>
-                                            <option value="none">Nenhum</option>
-                                            <option value="basic">Básico</option>
-                                            <option value="intermediate">Intermediário</option>
-                                            <option value="advanced">Avançado</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>User Id</label>
-                                        <input class="form-control user_id" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
-=======
                     <div id="step5" class="tab-pane disabled">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
+                                <h3>Documentos</h3>
+                            </div>
+
+                            <div class="col-md-2">
                                 <button class="btn btn-success pull-right" id="add-documents" style="margin-top: 20px">+ Adicionar</button>
                             </div>
+                        </div>
+
+                        <div class="alert alert-danger print-error-msg" style="display: none">
+                            <ul></ul>
                         </div>
 
                         <form method="post" action="" name="registration_documents" enctype="multipart/form-data" id="registration_documents">
@@ -916,16 +772,15 @@
                                     <div class="form-group row">
                                         <div class="col-md-4 col-xs-12">
                                             <label>Comprovante do documento</label>
-                                            <input type="file" class="form-control" name="registration_documents[0][document_file_id]" />
+                                            <input type="file" class="form-control" name="registration_documents[0][document_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-md-4 col-xs-12">
                                             <label>User Id</label>
-                                            <input type="text" class="form-control" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
+                                            <input type="text" class="form-control user_id" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
                                         </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                     </div>
                                 </div>
                             </div>
@@ -941,9 +796,17 @@
 
                     <div id="step6" class="tab-pane disabled">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
+                                <h3>Idiomas</h3>
+                            </div>
+
+                            <div class="col-md-2">
                                 <button class="btn btn-success pull-right" id="add-languages" style="margin-top: 20px">+ Adicionar</button>
                             </div>
+                        </div>
+
+                        <div class="alert alert-danger print-error-msg" style="display: none">
+                            <ul></ul>
                         </div>
 
                         <form method="post" action="" name="registration_languages" id="registration_languages">
@@ -982,7 +845,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-4 col-xs-12">
                                             <label>User Id</label>
-                                            <input class="form-control" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
+                                            <input class="form-control user_id" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
                                         </div>
                                     </div>
                                 </div>
@@ -996,15 +859,13 @@
                         </form>
                     </div>
 
-<<<<<<< 42db791530129a0d3435ced9018bf7dffc3225b8
-                                <div class="form-group row">
-                                    <div class="col-md-4 col-xs-12">
-                                        <label>User Id</label>
-                                        <input class="form-control user_id" type="text" name="registration_dependents[0][user_id]" />
-=======
                     <div id="step7" class="tab-pane disabled">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
+                                <h3>Dependents</h3>
+                            </div>
+
+                            <div class="col-md-2">
                                 <button class="btn btn-success pull-right" id="add-dependents" style="margin-top: 20px">+ Adicionar</button>
                             </div>
                         </div>
@@ -1099,9 +960,8 @@
                                     <div class="form-group row">
                                         <div class="col-md-4 col-xs-12">
                                             <label>User Id</label>
-                                            <input class="form-control" type="text" name="registration_dependents[0][user_id]" />
+                                            <input class="form-control user_id" type="text" name="registration_dependents[0][user_id]" />
                                         </div>
->>>>>>> [BT-28] Ajustes de layout e implantação do request protheus
                                     </div>
                                 </div>
                             </div>
@@ -1117,5 +977,4 @@
             </div>
         </div>
     </body>
-
 </html>
