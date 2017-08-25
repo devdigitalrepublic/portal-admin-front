@@ -11,3 +11,13 @@
     top: -19px;
     position: relative;
 }
+
+#registration_professional_data, #registration_user_data{
+    border: 1px solid #CCC;
+    padding: 20px;
+    margin-top: 65px;
+}
+
+.form-container{
+    margin-bottom: 90px;
+}

@@ -379,4 +379,21 @@ $(document).ready(function () {
       return false;
     }
   });
+  
+    let TOKEN = "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ";
+    $.ajax({
+        method: "GET",
+        url: urlApi + "protheus/user",
+        dataType: "JSON",
+        data: {system_token : TOKEN, user_id: 12},
+        beforeSend: function () {
+            $.blockUI();
+        }
+    }).done(function (data) {
+        
+    }).always(function(){
+        $.unblockUI();
+    });
+  
+  
 });
