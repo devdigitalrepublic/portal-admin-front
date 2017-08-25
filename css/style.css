@@ -21,3 +21,17 @@
 .form-container{
     margin-bottom: 90px;
 }
+
+.modal-large {
+    width: 95% !important;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+table, th, td {
+   border: 1px solid #CCC;
+   padding: 5px;
+}
+
+tr:nth-child(even) {background: #FFF}
+tr:nth-child(odd) {background: #EEE}

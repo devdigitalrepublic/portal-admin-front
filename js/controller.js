@@ -10,7 +10,8 @@ $(document).ready(function () {
   $('.money').mask('000.000.000.000.000,00', {reverse: true});
 
   var urlApi = "http://dev.portaladminv2.com/api/v1/";
-  var urlPortal = "http://cms.portalmaisfoco.com.br/account/get_me/return.json/?access_token=";
+  var urlPortal = "http://portal.bt.reciclarelabs.com.br/";
+  var urlPortalAdmin = "http://cms.bt.reciclarelabs.com.br/account/get_me/return.json/?access_token=";
 
   var access_token = getParameterByName('access_token');
   var user_data = "";
@@ -113,10 +114,31 @@ $(document).ready(function () {
     });
   }
 
+  function tableDataForm(title, formSerialized, divAppendData) {
+    var table = $("<table/>").addClass('table table-bordered');
+    var caption = $("<caption/>").text(title);
+    table.append(caption);
+    $.each(formSerialized, function(index, data) {
+      var row = $("<tr/>");
+      var td1 = $("<th/>");
+      var td2 = $("<td/>");
+      var $label = $('[name="'+data.name+'"]').siblings('label:first');
+
+      row.append(td1);
+      td1.append($label.text());
+
+      row.append(td2);
+      td2.append(data.value);
+
+      table.append(row);
+    });
+    divAppendData.html(table);
+  }
+
   if(typeof access_token !== null) {
     $.ajax({
       async: false,
-      url: urlPortal+access_token,
+      url: urlPortalAdmin+access_token,
       type: "POST",
       headers: {
         "Accept": "application/json"
@@ -125,6 +147,9 @@ $(document).ready(function () {
       success: function (data) {
         user_data = data.result;
         setUserId(user_data);
+      },
+      error: function() {
+        $(location).attr('href', urlPortal);
       }
     });
   }
@@ -379,52 +404,104 @@ $(document).ready(function () {
       return false;
     }
   });
-  
-    let TOKEN = "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ";
+
+  $(".confirm_registration").click(function() {
+    var user_data = $("#registration_user_data").serializeArray();
+    var addresses = $("#registration_addresses").serializeArray();
+    var professional_data = $("#registration_professional_data").serializeArray();
+    var phone_numbers = $("#registration_phone_numbers").serializeArray();
+    var documents = $("#registration_documents").serializeArray();
+    var languages = $("#registration_languages").serializeArray();
+    var dependents = $("#registration_languages").serializeArray();
+
+    var confirm_user_data = $("#confirm_all_data .modal-body .confirm_user_data");
+    var confirm_addresses = $("#confirm_all_data .modal-body .confirm_addresses");
+    var confirm_professional_data = $("#confirm_all_data .modal-body .confirm_professional_data");
+    var confirm_phone_numbers = $("#confirm_all_data .modal-body .confirm_phone_numbers");
+    var confirm_documents = $("#confirm_all_data .modal-body .confirm_documents");
+    var confirm_languages = $("#confirm_all_data .modal-body .confirm_languages");
+    var confirm_dependents = $("#confirm_all_data .modal-body .confirm_dependents");
+
+    confirm_user_data.html('');
+    confirm_addresses.html('');
+    confirm_professional_data.html('');
+    confirm_phone_numbers.html('');
+    confirm_documents.html('');
+    confirm_languages.html('');
+    confirm_dependents.html('');
+
+    tableDataForm("Dados do usuário", user_data, confirm_user_data);
+    tableDataForm("Dados do endereço", addresses, confirm_addresses);
+    tableDataForm("Dados do profissional", professional_data, confirm_professional_data);
+    tableDataForm("Contatos", phone_numbers, confirm_phone_numbers);
+    tableDataForm("Documentos", documents, confirm_documents);
+    tableDataForm("Idiomas", languages, confirm_languages);
+    tableDataForm("Dependentes", dependents, confirm_dependents);
+  });
+
+  $(".store_registration").click(function() {
+    var allData = new FormData();
+
+    allData = serializeFormData(allData, ".tab-content");
+    allData.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
+
     $.ajax({
-        method: "GET",
-        url: urlApi + "protheus/user",
-        dataType: "JSON",
-        data: {system_token : TOKEN, user_id: 13},
-        beforeSend: function () {
-            $.blockUI();
+        url: urlApi + "registration/create",
+        type: "POST",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: allData,
+        success: function (data) {
+          console.log('cadastro realizado');
         }
-    }).done(function (data) {
-        let user = data.user;
-        $('[name="registration_user_data[full_name]"]').val(user.nome);
-        $('[name="registration_user_data[enrollment]"]').val(user.mat);
-        $('[name="registration_user_data[social_name]"]').val(user.nomecm);
-        $('[name="registration_user_data[email]"]').val(user.email);
-        $('[name="registration_user_data[cpf]"]').val(user.cic);
-        $('[name="registration_user_data[mothers_name]"]').val(user.mae);
-        $('[name="registration_user_data[country_code_birth]"]').val(user.grinra);
-        $('[name="registration_user_data[country_nacionality_code]"]').val(user.grinra);
-        $('[name="registration_user_data[gender]"]').val(user.sexo);
-        $('[name="registration_user_data[date_of_birth]"]').val(user.nasc);
-        $('[name="registration_user_data[state_birth]"]').val(user.estado);
-        $('[name="registration_user_data[unit]"]').val(user.nomemp);
-        $('[name="registration_addresses[0][complement]"]').val(user.comple);
-        $('[name="registration_addresses[0][number]"]').val(user.numend);
-        $('[name="registration_addresses[0][state]"]').val(user.estado);
-        $('[name="registration_addresses[0][city]"]').val(user.munici);
-        $('[name="registration_addresses[0][zip_code]"]').val(user.cep);
-        $('[name="registration_addresses[0][neighborhood]"]').val(user.bairro);
-        $('[name="registration_addresses[0][address]"]').val(user.endere);
-        $('[name="registration_professional_data[pis]"]').val(user.pis);
-        $('[name="registration_professional_data[role]"]').val(user.rjdesc);
-        $('[name="registration_professional_data[work_passport]"]').val(user.numcp);
-        $('[name="registration_professional_data[work_passport_series]"]').val(user.sercp);
-        $('[name="registration_documents[0][document_type]"]').val("rg");
-        $('[name="registration_documents[0][number]"]').val(user.rg);
-        $('[name="registration_phone_numbers[0][phone_type]"]').val("mobile");
-        $('[name="registration_phone_numbers[0][area_code]"]').val(user.dddcel);
-        $('[name="registration_phone_numbers[0][phone_number]"]').val(user.numcel);
-        $('[name="registration_phone_numbers[1][phone_type]"]').val("residencial");
-        $('[name="registration_phone_numbers[1][area_code]"]').val(user.dddfon);
-        $('[name="registration_phone_numbers[1][phone_number]"]').val(user.telefo);
-    }).always(function(){
-        setTimeout(function(){$.unblockUI();}, 2000);
-    });
+      });
+      return false;
+  });
   
-  
+  let TOKEN = "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ";
+  $.ajax({
+      method: "GET",
+      url: urlApi + "protheus/user",
+      dataType: "JSON",
+      data: {system_token : TOKEN, user_id: user_data.id},
+      beforeSend: function () {
+          $.blockUI();
+      }
+  }).done(function (data) {
+      let user = data.user;
+      $('[name="registration_user_data[full_name]"]').val(user.nome);
+      $('[name="registration_user_data[enrollment]"]').val(user.mat);
+      $('[name="registration_user_data[social_name]"]').val(user.nomecm);
+      $('[name="registration_user_data[email]"]').val(user.email);
+      $('[name="registration_user_data[cpf]"]').val(user.cic);
+      $('[name="registration_user_data[mothers_name]"]').val(user.mae);
+      $('[name="registration_user_data[country_code_birth]"]').val(user.grinra);
+      $('[name="registration_user_data[country_nacionality_code]"]').val(user.grinra);
+      $('[name="registration_user_data[gender]"]').val(user.sexo);
+      $('[name="registration_user_data[date_of_birth]"]').val(user.nasc);
+      $('[name="registration_user_data[state_birth]"]').val(user.estado);
+      $('[name="registration_user_data[unit]"]').val(user.nomemp);
+      $('[name="registration_addresses[0][complement]"]').val(user.comple);
+      $('[name="registration_addresses[0][number]"]').val(user.numend);
+      $('[name="registration_addresses[0][state]"]').val(user.estado);
+      $('[name="registration_addresses[0][city]"]').val(user.munici);
+      $('[name="registration_addresses[0][zip_code]"]').val(user.cep);
+      $('[name="registration_addresses[0][neighborhood]"]').val(user.bairro);
+      $('[name="registration_addresses[0][address]"]').val(user.endere);
+      $('[name="registration_professional_data[pis]"]').val(user.pis);
+      $('[name="registration_professional_data[role]"]').val(user.rjdesc);
+      $('[name="registration_professional_data[work_passport]"]').val(user.numcp);
+      $('[name="registration_professional_data[work_passport_series]"]').val(user.sercp);
+      $('[name="registration_documents[0][document_type]"]').val("rg");
+      $('[name="registration_documents[0][number]"]').val(user.rg);
+      $('[name="registration_phone_numbers[0][phone_type]"]').val("mobile");
+      $('[name="registration_phone_numbers[0][area_code]"]').val(user.dddcel);
+      $('[name="registration_phone_numbers[0][phone_number]"]').val(user.numcel);
+      $('[name="registration_phone_numbers[1][phone_type]"]').val("residencial");
+      $('[name="registration_phone_numbers[1][area_code]"]').val(user.dddfon);
+      $('[name="registration_phone_numbers[1][phone_number]"]').val(user.telefo);
+  }).always(function(){
+      setTimeout(function(){$.unblockUI();}, 2000);
+  });
 });

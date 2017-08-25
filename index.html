@@ -47,7 +47,7 @@
                             <div class="form-group row">
                                 <div class="col-md-3 col-xs-12">
                                     <label>Nome completo</label>
-                                    <input type="text" class="form-control" name="registration_user_data[full_name]" maxlength="70" />
+                                    <input type="text" class="form-control" name="registration_user_data[full_name]" maxlength="70"/>
                                 </div>
 
                                 <div class="col-md-3 col-xs-12">
@@ -467,7 +467,7 @@
                                 <div class="col-md-4 col-xs-12">
                                     <label>Possui alguma deficiência?</label>
                                     <select class="form-control" name="registration_professional_data[type_disability]">
-                                        <option value="">Selecione algum</option>
+                                        <option value="">Selecione alguma opção</option>
                                         <option value="none">Nenhuma</option>
                                         <option value="physical">Psicológica</option>
                                         <option value="auditory">Auditiva</option>
@@ -479,6 +479,7 @@
                                 <div class="col-md-4 col-xs-12">
                                     <label>Você é reabilitado ou readaptado?</label>
                                     <select class="form-control" name="registration_professional_data[rehabilitated_worker]">
+                                        <option value="">Selecione alguma opção</option>
                                         <option value="s">Sim</option>
                                         <option value="n">Não</option>
                                     </select>
@@ -487,6 +488,7 @@
                                 <div class="col-md-4 col-xs-12">
                                     <label>Possui cotas de deficiência?</label>
                                     <select class="form-control" name="registration_professional_data[quota]">
+                                        <option value="">Selecione alguma opção</option>
                                         <option value="s">Sim</option>
                                         <option value="n">Não</option>
                                     </select>
@@ -822,7 +824,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <label>Idioma</label>
                                             <select class="form-control" name="registration_languages[0][language]" required title="Campo obrigatório">
-                                                <option value="">Selecione algum</option>
+                                                <option value="">Selecione algum idioma</option>
                                                 <option value="english">Inglês</option>
                                                 <option value="portuguese">Português</option>
                                                 <option value="spanish">Espanhol</option>
@@ -833,7 +835,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <label>Nível</label>
                                             <select class="form-control" name="registration_languages[0][level]" required title="Campo obrigatório">
-                                                <option value="">Selecione algum</option>
+                                                <option value="">Selecione algum nível</option>
                                                 <option value="none">Nenhum</option>
                                                 <option value="basic">Básico</option>
                                                 <option value="intermediate">Intermediário</option>
@@ -968,13 +970,40 @@
 
                             <div class="form-group row">
                                 <div class="col-md-12 col-xs-12">
-                                    <input type="submit" value="Finalizar" class="btn btn-primary pull-right" />
+                                    <button type="button" class="btn btn-primary pull-right confirm_registration" data-toggle="modal" data-target="#confirm_all_data">Finalizar</button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade table-modal" id="confirm_all_data" role="dialog">
+                <div class="modal-dialog modal-large">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Confirmação dos dados</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="confirm_user_data"></div>
+                        <div class="confirm_addresses"></div>
+                        <div class="confirm_professional_data"></div>
+                        <div class="confirm_phone_numbers"></div>
+                        <div class="confirm_documents"></div>
+                        <div class="confirm_languages"></div>
+                        <div class="confirm_dependents"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Voltar</button>
+                      <button type="button" class="btn btn-primary pull-right store_registration">Confirmar</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>
