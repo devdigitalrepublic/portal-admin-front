@@ -37,6 +37,10 @@
                     <h3>Dados do usuário</h3>
                     <hr />
 
+                    <div class="alert alert-danger print-error-msg" style="display: none">
+                        <ul></ul>
+                    </div>
+
                     <form method="post" action="" name="registration_user_data" id="registration_user_data">
                         <div class="form-group row">
                             <div class="col-md-3 col-xs-12">
@@ -169,9 +173,9 @@
                                 <label>Tipo de pessoa</label>
                                 <select class="form-control" name="registration_user_data[person_type]">
                                     <option value="">Selecione algum</option>
-                                    <option value="brazilian">Branco</option>
-                                    <option value="foreign">Pardo</option>
-                                    <option value="trainee">Negro</option>
+                                    <option value="brazilian">Brasileiro</option>
+                                    <option value="foreign">Estrangeiro</option>
+                                    <option value="trainee">Estagiário</option>
                                 </select>
                             </div>
                         </div>
@@ -191,7 +195,7 @@
 
                             <div class="col-md-6 col-xs-12">
                                 <label>User id</label>
-                                <input type="text" class="form-control" name="registration_user_data[user_id]" />
+                                <input type="text" class="form-control user_id" name="registration_user_data[user_id]" />
                             </div>
                         </div>
 
@@ -211,6 +215,10 @@
                         <div class="col-md-2">
                             <button class="btn btn-success pull-right" id="add-address" style="margin-top: 20px">+ Adicionar</button>
                         </div>
+                    </div>
+
+                    <div class="alert alert-danger print-error-msg" style="display: none">
+                        <ul></ul>
                     </div>
 
                     <form method="post" action="" name="registration_addresses" enctype="multipart/form-data" id="registration_addresses">
@@ -310,14 +318,14 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>Comprovante do documento</label>
-                                        <input type="file" class="form-control" id="upload-file" name="registration_addresses[0][address_file_id]" />
+                                        <input type="file" class="form-control" id="upload-file" name="registration_addresses[0][address_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf" />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-3">
                                         <label>User id</label>
-                                        <input type="text" class="form-control" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
+                                        <input type="text" class="form-control user_id" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
                             </div>
@@ -335,6 +343,10 @@
                 <div id="step3" class="tab-pane disabled">
                     <h3>Dados profissionais</h3>
                     <hr />
+
+                    <div class="alert alert-danger print-error-msg" style="display: none">
+                        <ul></ul>
+                    </div>
 
                     <form method="post" action="" name="registration_professional_data" enctype="multipart/form-data" id="registration_professional_data">
                         <div class="form-group row">
@@ -527,14 +539,14 @@
                         <div class="form-group row">
                             <div class="col-md-3">
                                 <label>Comprovante do pis</label>
-                                <input type="file" class="form-control" name="registration_professional_data[pis_file_id]" />
+                                <input type="file" class="form-control" name="registration_professional_data[pis_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-3">
                                 <label>User id</label>
-                                <input type="text" class="form-control" name="registration_professional_data[user_id]" />
+                                <input type="text" class="form-control user_id" name="registration_professional_data[user_id]" />
                             </div>
                         </div>
 
@@ -555,6 +567,10 @@
                         <div class="col-md-2">
                             <button class="btn btn-success pull-right" id="add-contacts" style="margin-top: 20px">+ Adicionar</button>
                         </div>
+                    </div>
+
+                    <div class="alert alert-danger print-error-msg" style="display: none">
+                        <ul></ul>
                     </div>
 
                     <form method="post" action="" name="registration_phone_numbers" enctype="multipart/form-data" id="registration_phone_numbers">
@@ -604,7 +620,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-3 col-xs-12">
                                         <label>User id</label>
-                                        <input type="text" class="form-control" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
+                                        <input type="text" class="form-control user_id" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
                                     </div>
                                 </div>
                             </div>
@@ -628,6 +644,10 @@
                         <div class="col-md-2">
                             <button class="btn btn-success pull-right" id="add-documents" style="margin-top: 20px">+ Adicionar</button>
                         </div>
+                    </div>
+
+                    <div class="alert alert-danger print-error-msg" style="display: none">
+                        <ul></ul>
                     </div>
 
                     <form method="post" action="" name="registration_documents" enctype="multipart/form-data" id="registration_documents">
@@ -702,14 +722,14 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>Comprovante do documento</label>
-                                        <input type="file" class="form-control" name="registration_documents[0][document_file_id]" />
+                                        <input type="file" class="form-control" name="registration_documents[0][document_file_id]" accept="image/jpeg,image/bmp,image/gif,application/pdf"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>User Id</label>
-                                        <input type="text" class="form-control" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
+                                        <input type="text" class="form-control user_id" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
                             </div>
@@ -733,6 +753,10 @@
                         <div class="col-md-2">
                             <button class="btn btn-success pull-right" id="add-languages" style="margin-top: 20px">+ Adicionar</button>
                         </div>
+                    </div>
+
+                    <div class="alert alert-danger print-error-msg" style="display: none">
+                        <ul></ul>
                     </div>
 
                     <form method="post" action="" name="registration_languages" id="registration_languages">
@@ -771,7 +795,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>User Id</label>
-                                        <input class="form-control" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
+                                        <input class="form-control user_id" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
                                     </div>
                                 </div>
                             </div>
@@ -886,7 +910,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-4 col-xs-12">
                                         <label>User Id</label>
-                                        <input class="form-control" type="text" name="registration_dependents[0][user_id]" />
+                                        <input class="form-control user_id" type="text" name="registration_dependents[0][user_id]" />
                                     </div>
                                 </div>
                             </div>

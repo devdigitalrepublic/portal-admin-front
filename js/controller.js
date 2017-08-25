@@ -10,6 +10,10 @@ $(document).ready(function () {
   $('.money').mask('000.000.000.000.000,00', {reverse: true});
 
   var urlApi = "http://dev.portaladminv2.com/api/v1/";
+  var urlPortal = "http://cms.portalmaisfoco.com.br/account/get_me/return.json/?access_token=";
+
+  var access_token = getParameterByName('access_token');
+  var user_data = "";
 
   $(".nav-tabs li").removeClass("disabled");
   $(".nav-tabs li a[data-toggle=tab]").on("click", function (e) {
@@ -49,6 +53,7 @@ $(document).ready(function () {
     // $(classFormContainer).append("<hr>");
     $(classFormContainer).append(formClone);
     removeForm(classForm);
+    setUserId(user_data);
     searchCep();
   }
 
@@ -75,6 +80,53 @@ $(document).ready(function () {
       }
     });
     return data;
+  }
+
+  function printErrorMsg (errors, divPrintErros) {
+    $(divPrintErros).find("ul").html('');
+    $(divPrintErros).css('display','block');
+    $.each( errors, function( key, value ) {
+      $(divPrintErros).find("ul").append('<li>'+value+'</li>');
+    });
+  }
+
+  function clearErrorMsg(divClearError) {
+    $(divClearError).find("ul").html('');
+    $(divClearError).css('display', 'none');
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function setUserId(user_data) {
+    var inputs_user_id = $('form').find('.user_id');
+
+    $.each(inputs_user_id, function (index, field) {
+      $(field).val(user_data.id);
+    });
+  }
+
+  if(typeof access_token !== null) {
+    $.ajax({
+      async: false,
+      url: urlPortal+access_token,
+      type: "POST",
+      headers: {
+        "Accept": "application/json"
+      },
+      global: false,
+      success: function (data) {
+        user_data = data.result;
+        setUserId(user_data);
+      }
+    });
   }
 
   removeForm('.addresses');
@@ -106,15 +158,20 @@ $(document).ready(function () {
   $("#registration_user_data").validate({
     submitHandler: function (form) {
       $.ajax({
-        url: urlApi + "validate/step",
+        url: urlApi + "validate/step1",
         type: "POST",
         headers: {
           "Accept": "application/json"
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          // enabledAndDisabledTab('.step1', '.step2');
-          // enabledAndDisabledTabContent('#step1', '#step2');
+          if($.isEmptyObject(data.error)){
+            clearErrorMsg("#step1 .print-error-msg");
+            // enabledAndDisabledTab('.step1', '.step2');
+            // enabledAndDisabledTabContent('#step1', '#step2');
+          }else{
+            printErrorMsg(data.error, "#step1 .print-error-msg");
+          }
         }
       });
       return false;
@@ -154,17 +211,26 @@ $(document).ready(function () {
 
   $("#registration_addresses").validate({
     submitHandler: function (form) {
+      var data = new FormData();
+
+      data = serializeFormData(data, "#registration_addresses");
+      data.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
 
       $.ajax({
-        url: urlApi + "validate/step",
+        url: urlApi + "validate/step2",
         type: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
-        data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: data,
         success: function (data) {
-          // enabledAndDisabledTab('.step2', '.step3');
-          // enabledAndDisabledTabContent('#step2', '#step3');
+          if($.isEmptyObject(data.error)){
+            clearErrorMsg("#step2 .print-error-msg");
+            // enabledAndDisabledTab('.step2', '.step3');
+            // enabledAndDisabledTabContent('#step2', '#step3');
+          }else{
+            printErrorMsg(data.error, "#step2 .print-error-msg");
+          }
         }
       });
       return false;
@@ -173,16 +239,26 @@ $(document).ready(function () {
 
   $("#registration_professional_data").validate({
     submitHandler: function (form) {
+      var data = new FormData();
+
+      data = serializeFormData(data, "#registration_professional_data");
+      data.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
+
       $.ajax({
-        url: urlApi + "validate/step",
+        url: urlApi + "validate/step3",
         type: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
-        data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: data,
         success: function (data) {
-          // enabledAndDisabledTab('.step3', '.step4');
-          // enabledAndDisabledTabContent('#step3', '#step4');
+          if($.isEmptyObject(data.error)){
+            clearErrorMsg("#step3 .print-error-msg");
+            // enabledAndDisabledTab('.step3', '.step4');
+            // enabledAndDisabledTabContent('#step3', '#step4');
+          }else{
+            printErrorMsg(data.error, "#step3 .print-error-msg");
+          }
         }
       });
       return false;
@@ -210,15 +286,20 @@ $(document).ready(function () {
   $("#registration_phone_numbers").validate({
     submitHandler: function (form) {
       $.ajax({
-        url: urlApi + "validate/step",
+        url: urlApi + "validate/step4",
         type: "POST",
         headers: {
           "Accept": "application/json",
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          // enabledAndDisabledTab('.step4', '.step5');
-          // enabledAndDisabledTabContent('#step4', '#step5');
+          if($.isEmptyObject(data.error)){
+            clearErrorMsg("#step4 .print-error-msg");
+            // enabledAndDisabledTab('.step4', '.step5');
+            // enabledAndDisabledTabContent('#step4', '#step5');
+          }else{
+            printErrorMsg(data.error, "#step4 .print-error-msg");
+          }
         }
       });
 
@@ -228,16 +309,26 @@ $(document).ready(function () {
 
   $("#registration_documents").validate({
     submitHandler: function (form) {
+      var data = new FormData();
+
+      data = serializeFormData(data, "#registration_documents");
+      data.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
+
       $.ajax({
-        url: urlApi + "validate/step",
+        url: urlApi + "validate/step5",
         type: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
-        data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: data,
         success: function (data) {
-          // enabledAndDisabledTab('.step5', '.step6');
-          // enabledAndDisabledTabContent('#step5', '#step6');
+          if($.isEmptyObject(data.error)){
+            clearErrorMsg("#step5 .print-error-msg");
+            // enabledAndDisabledTab('.step5', '.step6');
+            // enabledAndDisabledTabContent('#step5', '#step6');
+          }else{
+            printErrorMsg(data.error, "#step5 .print-error-msg");
+          }
         }
       });
       return false;
@@ -247,15 +338,20 @@ $(document).ready(function () {
   $("#registration_languages").validate({
     submitHandler: function (form) {
       $.ajax({
-        url: urlApi + "validate/step",
+        url: urlApi + "validate/step6",
         type: "POST",
         headers: {
           "Accept": "application/json",
         },
         data: $(form).serialize() + "&system_token=PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ",
         success: function (data) {
-          // enabledAndDisabledTab('.step6', '.step7');
-          // enabledAndDisabledTabContent('#step6', '#step7');
+          if($.isEmptyObject(data.error)){
+            clearErrorMsg("#step6 .print-error-msg");
+            // enabledAndDisabledTab('.step6', '.step7');
+            // enabledAndDisabledTabContent('#step6', '#step7');
+          }else{
+            printErrorMsg(data.error, "#step6 .print-error-msg");
+          }
         }
       });
       return false;
