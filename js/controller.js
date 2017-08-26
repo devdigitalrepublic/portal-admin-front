@@ -18,8 +18,7 @@ $(document).ready(function () {
   var access_token = getParameterByName('access_token');
   var user_data = "";
 
-  $(".nav-tabs li").removeClass("disabled");
-  $(".nav-tabs li a[data-toggle=tab]").on("click", function (e) {
+  $(".nav-pills li a[data-toggle=tab]").on("click", function (e) {
     if ($(this).parent().hasClass("disabled")) {
       e.preventDefault();
       return false;
@@ -27,11 +26,11 @@ $(document).ready(function () {
   });
 
   function enabledAndDisabledTab(tabDisabled, tabEnabled) {
-    $(".nav-tabs " + tabDisabled).removeClass("active");
-    $(".nav-tabs " + tabDisabled).addClass("disabled");
+    $(".nav-pills " + tabDisabled).removeClass("active");
+    $(".nav-pills " + tabDisabled).addClass("disabled");
 
-    $(".nav-tabs " + tabEnabled).removeClass("disabled");
-    $(".nav-tabs " + tabEnabled).addClass("active");
+    $(".nav-pills " + tabEnabled).removeClass("disabled");
+    $(".nav-pills " + tabEnabled).addClass("active");
   }
 
   function enabledAndDisabledTabContent(tabContentDisabled, tabContentEnabled) {
@@ -182,6 +181,36 @@ $(document).ready(function () {
     addForm('.dependents', '.dependents-container');
   });
 
+  $(".back-user-data").click(function() {
+    enabledAndDisabledTab('.step2', '.step1');
+    enabledAndDisabledTabContent('#step2', '#step1');
+  });
+
+  $(".back-addresses").click(function() {
+    enabledAndDisabledTab('.step3', '.step2');
+    enabledAndDisabledTabContent('#step3', '#step2');
+  });
+
+  $(".back-professional-data").click(function() {
+    enabledAndDisabledTab('.step4', '.step3');
+    enabledAndDisabledTabContent('#step4', '#step3');
+  });
+
+  $(".back-phone-numbers").click(function() {
+    enabledAndDisabledTab('.step5', '.step4');
+    enabledAndDisabledTabContent('#step5', '#step4');
+  });
+
+  $(".back-documents").click(function() {
+    enabledAndDisabledTab('.step6', '.step5');
+    enabledAndDisabledTabContent('#step6', '#step5');
+  });
+
+  $(".back-languages").click(function() {
+    enabledAndDisabledTab('.step7', '.step6');
+    enabledAndDisabledTabContent('#step7', '#step6');
+  });
+
   $("#registration_user_data").validate({
     submitHandler: function (form) {
       $.ajax({
@@ -194,8 +223,8 @@ $(document).ready(function () {
         success: function (data) {
           if($.isEmptyObject(data.error)){
             clearErrorMsg("#step1 .print-error-msg");
-            // enabledAndDisabledTab('.step1', '.step2');
-            // enabledAndDisabledTabContent('#step1', '#step2');
+            enabledAndDisabledTab('.step1', '.step2');
+            enabledAndDisabledTabContent('#step1', '#step2');
           }else{
             printErrorMsg(data.error, "#step1 .print-error-msg");
           }
@@ -253,8 +282,8 @@ $(document).ready(function () {
         success: function (data) {
           if($.isEmptyObject(data.error)){
             clearErrorMsg("#step2 .print-error-msg");
-            // enabledAndDisabledTab('.step2', '.step3');
-            // enabledAndDisabledTabContent('#step2', '#step3');
+            enabledAndDisabledTab('.step2', '.step3');
+            enabledAndDisabledTabContent('#step2', '#step3');
           }else{
             printErrorMsg(data.error, "#step2 .print-error-msg");
           }
@@ -281,8 +310,8 @@ $(document).ready(function () {
         success: function (data) {
           if($.isEmptyObject(data.error)){
             clearErrorMsg("#step3 .print-error-msg");
-            // enabledAndDisabledTab('.step3', '.step4');
-            // enabledAndDisabledTabContent('#step3', '#step4');
+            enabledAndDisabledTab('.step3', '.step4');
+            enabledAndDisabledTabContent('#step3', '#step4');
           }else{
             printErrorMsg(data.error, "#step3 .print-error-msg");
           }
@@ -322,8 +351,8 @@ $(document).ready(function () {
         success: function (data) {
           if($.isEmptyObject(data.error)){
             clearErrorMsg("#step4 .print-error-msg");
-            // enabledAndDisabledTab('.step4', '.step5');
-            // enabledAndDisabledTabContent('#step4', '#step5');
+            enabledAndDisabledTab('.step4', '.step5');
+            enabledAndDisabledTabContent('#step4', '#step5');
           }else{
             printErrorMsg(data.error, "#step4 .print-error-msg");
           }
@@ -351,8 +380,8 @@ $(document).ready(function () {
         success: function (data) {
           if($.isEmptyObject(data.error)){
             clearErrorMsg("#step5 .print-error-msg");
-            // enabledAndDisabledTab('.step5', '.step6');
-            // enabledAndDisabledTabContent('#step5', '#step6');
+            enabledAndDisabledTab('.step5', '.step6');
+            enabledAndDisabledTabContent('#step5', '#step6');
           }else{
             printErrorMsg(data.error, "#step5 .print-error-msg");
           }
@@ -374,8 +403,8 @@ $(document).ready(function () {
         success: function (data) {
           if($.isEmptyObject(data.error)){
             clearErrorMsg("#step6 .print-error-msg");
-            // enabledAndDisabledTab('.step6', '.step7');
-            // enabledAndDisabledTabContent('#step6', '#step7');
+            enabledAndDisabledTab('.step6', '.step7');
+            enabledAndDisabledTabContent('#step6', '#step7');
           }else{
             printErrorMsg(data.error, "#step6 .print-error-msg");
           }
@@ -385,27 +414,27 @@ $(document).ready(function () {
     }
   });
 
-  $("#registration_dependents").validate({
-    submitHandler: function (form) {
-      var allData = new FormData();
+  // $("#registration_dependents").validate({
+  //   submitHandler: function (form) {
+  //     var allData = new FormData();
 
-      allData = serializeFormData(allData, ".tab-content");
-      allData.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
+  //     allData = serializeFormData(allData, ".tab-content");
+  //     allData.append('system_token', "PcyG24nCJcsxvChVJmAmzuHPGzhHa2rJ");
 
-      $.ajax({
-        url: urlApi + "registration/create",
-        type: "POST",
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: allData,
-        success: function (data) {
-          console.log('cadastro realizado');
-        }
-      });
-      return false;
-    }
-  });
+  //     $.ajax({
+  //       url: urlApi + "registration/create",
+  //       type: "POST",
+  //       cache: false,
+  //       contentType: false,
+  //       processData: false,
+  //       data: allData,
+  //       success: function (data) {
+  //         console.log('cadastro realizado');
+  //       }
+  //     });
+  //     return false;
+  //   }
+  // });
 
   $(".confirm_registration").click(function() {
     var user_data = $("#registration_user_data").serializeArray();
@@ -455,7 +484,9 @@ $(document).ready(function () {
         processData: false,
         data: allData,
         success: function (data) {
-          console.log('cadastro realizado');
+          if(data == true) {
+            $(location).attr('href', urlPortal);
+          }
         }
       });
       return false;
