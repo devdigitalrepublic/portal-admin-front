@@ -13,9 +13,9 @@
         <script src="js/uiblock.js"></script>
         <script src="js/controller.js"></script>
         <script src="js/search-cep.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
+        <script src="plugins/datepicker/js/bootstrap-datepicker.js"></script>
     </head>
 
     <body>
@@ -62,7 +62,7 @@
 
                                 <div class="col-md-3 col-xs-12">
                                     <label>Data de nascimento</label>
-                                    <input type="date" class="form-control" name="registration_user_data[date_of_birth]" />
+                                    <input type="text" class="form-control datepicker" name="registration_user_data[date_of_birth]" />
                                 </div>
                             </div>
 
@@ -390,7 +390,7 @@
 
                                 <div class="col-md-6 col-xs-12">
                                     <label>Data de registro CREF</label>
-                                    <input type="date" class="form-control" name="registration_professional_data[cref_registration_date]" />
+                                    <input type="text" class="form-control datepicker" name="registration_professional_data[cref_registration_date]" />
                                 </div>
                             </div>
 
@@ -417,7 +417,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6 col-xs-12">
                                     <label>Data de chegada</label>
-                                    <input type="date" class="form-control" name="registration_professional_data[foreign_arrival_date]" />
+                                    <input type="text" class="form-control datepicker" name="registration_professional_data[foreign_arrival_date]" />
                                 </div>
 
                                 <div class="col-md-6 col-xs-12">
@@ -509,7 +509,7 @@
                                 <div class="col-md-6 col-xs-12">
                                     <label>Data da finalização da graduação</label>
 
-                                    <input type="date" class="form-control" name="registration_professional_data[college_graduation_date]" />
+                                    <input type="text" class="form-control datepicker" name="registration_professional_data[college_graduation_date]" />
                                 </div>
 
                                 <div class="col-md-6 col-xs-12">
@@ -739,7 +739,7 @@
 
                                         <div class="col-md-4 col-xs-12">
                                             <label>Data de expedição</label>
-                                            <input type="date" class="form-control" name="registration_documents[0][shipping_date]" required title="Campo obrigatório" />
+                                            <input type="text" class="form-control datepicker" name="registration_documents[0][shipping_date]" required title="Campo obrigatório" />
                                         </div>
                                     </div>
 
@@ -751,7 +751,7 @@
 
                                         <div class="col-md-4 col-xs-12">
                                             <label>Data de expiração</label>
-                                            <input type="date" class="form-control" name="registration_documents[0][expiration_date]" />
+                                            <input type="text" class="form-control datepicker" name="registration_documents[0][expiration_date]" />
                                         </div>
 
                                         <div class="col-md-4 col-xs-12">
@@ -910,7 +910,7 @@
 
                                         <div class="col-md-4 col-xs-12">
                                             <label>Data de nascimento</label>
-                                            <input type="date" class="form-control" name="registration_dependents[0][date_of_birth]" />
+                                            <input type="text" class="form-control datepicker" name="registration_dependents[0][date_of_birth]" />
                                         </div>
 
                                         <div class="col-md-4 col-xs-12">

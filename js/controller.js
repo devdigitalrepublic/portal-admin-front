@@ -2,12 +2,14 @@ $(document).ready(function () {
   $('.date').mask('11/11/1111');
   $('.time').mask('00:00:00');
   $('.date_time').mask('00/00/0000 00:00:00');
+  $('.date').mask('00/00/0000');
   $('.cep').mask('00000-000');
   $('.phone').mask('0000-0000');
   $('.mobile').mask('9999-99999');
   $('.phone_with_ddd').mask('(00) 0000-0000');
   $('.cpf').mask('000.000.000-00', {reverse: true});
   $('.money').mask('000.000.000.000.000,00', {reverse: true});
+  $('.datepicker').datepicker();
 
   var urlApi = "http://dev.portaladminv2.com/api/v1/";
   var urlPortal = "http://portal.bt.reciclarelabs.com.br/";
