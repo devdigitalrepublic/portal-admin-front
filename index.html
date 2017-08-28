@@ -189,15 +189,15 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row hide">
                                 <div class="col-md-6 col-xs-12">
                                     <label>Registration finished at</label>
-                                    <input type="text" class="form-control" name="registration_user_data[registration_finished_at]" />
+                                    <input type="hidden" class="form-control" name="registration_user_data[registration_finished_at]" />
                                 </div>
 
                                 <div class="col-md-6 col-xs-12">
                                     <label>User id</label>
-                                    <input type="text" class="form-control user_id" name="registration_user_data[user_id]" />
+                                    <input type="hidden" class="form-control user_id" name="registration_user_data[user_id]" />
                                 </div>
                             </div>
 
@@ -324,10 +324,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row hide">
                                         <div class="col-md-3">
                                             <label>User id</label>
-                                            <input type="text" class="form-control user_id" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
+                                            <input type="hidden" class="form-control user_id" name="registration_addresses[0][user_id]" required title="Campo obrigatório" />
                                         </div>
                                     </div>
                                 </div>
@@ -386,7 +386,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6 col-xs-12">
                                     <label>CREF</label>
-                                    <input type="text" class="form-control" name="registration_professional_data[cref]" />
+                                    <input type="text" class="form-control" name="registration_professional_data[cref]" maxlength="18" />
                                 </div>
 
                                 <div class="col-md-6 col-xs-12">
@@ -548,10 +548,10 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row hide">
                                 <div class="col-md-3">
                                     <label>User id</label>
-                                    <input type="text" class="form-control user_id" name="registration_professional_data[user_id]" />
+                                    <input type="hidden" class="form-control user_id" name="registration_professional_data[user_id]" />
                                 </div>
                             </div>
 
@@ -623,10 +623,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row hide">
                                         <div class="col-md-3 col-xs-12">
                                             <label>User id</label>
-                                            <input type="text" class="form-control user_id" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
+                                            <input type="hidden" class="form-control user_id" name="registration_phone_numbers[0][user_id]" required title="Campo obrigatório">
                                         </div>
                                     </div>
                                 </div>
@@ -671,10 +671,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row hide">
                                         <div class="col-md-3 col-xs-12">
                                             <label>User id</label>
-                                            <input type="text" class="form-control user_id" name="registration_phone_numbers[1][user_id]" required title="Campo obrigatório">
+                                            <input type="hidden" class="form-control user_id" name="registration_phone_numbers[1][user_id]" required title="Campo obrigatório">
                                         </div>
                                     </div>
                                 </div>
@@ -781,10 +781,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row hide">
                                         <div class="col-md-4 col-xs-12">
                                             <label>User Id</label>
-                                            <input type="text" class="form-control user_id" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
+                                            <input type="hidden" class="form-control user_id" name="registration_documents[0][user_id]" required title="Campo obrigatório" />
                                         </div>
                                     </div>
                                 </div>
@@ -848,10 +848,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row hide">
                                         <div class="col-md-4 col-xs-12">
                                             <label>User Id</label>
-                                            <input class="form-control user_id" type="text" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
+                                            <input class="form-control user_id" type="hidden" name="registration_languages[0][user_id]" required title="Campo obrigatório" />
                                         </div>
                                     </div>
                                 </div>
@@ -869,7 +869,7 @@
                     <div id="step7" class="tab-pane disabled">
                         <div class="row">
                             <div class="col-md-10">
-                                <h3>Dependents</h3>
+                                <h3>Dependentes</h3>
                             </div>
 
                             <div class="col-md-2">
@@ -964,10 +964,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row hide">
                                         <div class="col-md-4 col-xs-12">
                                             <label>User Id</label>
-                                            <input class="form-control user_id" type="text" name="registration_dependents[0][user_id]" />
+                                            <input class="form-control user_id" type="hidden" name="registration_dependents[0][user_id]" />
                                         </div>
                                     </div>
                                 </div>
